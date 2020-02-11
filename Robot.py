@@ -15,11 +15,11 @@ class Robot:
 		"""
 		self.posx = posx
 		self.posy = posy
-		self.maxspeed = vmax
+		self.maxspeed = maxspeed
 		self.direction = direction 
 		if speed == None:
 			self.speed = 0
-		else
+		else:
 			self.speed = speed
 
 
@@ -41,7 +41,7 @@ class Robot:
 		doesn't modify speed
 		angle in degree, converted in radian
 		"""
-		self.direction = self.direction-angle
+		self.direction = self.direction+angle
 		return
 		
 		
@@ -52,7 +52,7 @@ class Robot:
 		doesn't modify speed
 		angle in degree, converted in radian
 		"""
-		self.direction = self.direction+angle
+		self.direction = self.direction-angle
 		return
 
 
@@ -63,7 +63,7 @@ class Robot:
 		using the speed and direction
 		"""
 		self.posx = self.posx + dt * math.cos(self.direction) * self.speed
-		self.posy = self.posy + dt * math.cos(self.direction) * self.speed
+		self.posy = self.posy + dt * math.sin(self.direction) * self.speed
 		return
 
 
@@ -79,7 +79,21 @@ class Robot:
 		return the position y
 		"""
 		return self.posy
-		
+
+
+	def printAll(self):
+		"""
+		print all parameters
+		"""
+		speedx = self.speed*math.cos(self.direction)
+		speedy = self.speed*math.sin(self.direction)
+		angle = self.direction * (180/math.pi)
+		print " pos = [",self.posx,",",self.posy,"]"
+		print " speed = ",self.speed
+		print "        speedx = ",speedx," ,  speedy = ",speedy
+		print " angle direction(°) = ",angle
+		print ""
+		return		
 
 		
 
