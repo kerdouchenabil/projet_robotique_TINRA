@@ -32,7 +32,8 @@ class Robot:
 		"""
 		self.speed = self.speed + acc*dt
 		return
-
+	def freiner(self):
+		self.setVit(0)
 
 	def turn_left(self, angle):
 		"""
@@ -79,8 +80,26 @@ class Robot:
 		return the position y
 		"""
 		return self.posy
+	
+	#getter
+	def getPos(self):
+		#return (self.posx,self.posy)
+	
+	
+	def getDirection(self):
+		return self.direction
 
-
+	#setter
+	def setPos(self,posx,posy):
+		self.posx=posx
+		self.posy=posy
+	
+	def setDirection(self,direction)
+		self.direction=direction
+		
+	def SetVit(self,vit):
+		self.speed=vit
+	
 	def printAll(self):
 		"""
 		print all parameters
