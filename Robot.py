@@ -97,7 +97,7 @@ class Robot:
 	def setDirection(self,direction)
 		self.direction=direction
 		
-	def SetVit(self,vit):
+	def setVit(self,vit):
 		self.speed=vit
 	
 	def printAll(self):
