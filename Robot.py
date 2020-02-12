@@ -1,99 +1,78 @@
-# -*- coding: utf-8 -*-
-import math 
+'''
+Created on 7 févr. 2020
 
-
-
+@author: clinton
+'''
 
 class Robot:
+    '''
+    classe qui represente le robot,
+    représenté par un point
+    il dispose d'un attribut direction de type Vecteur (pour l'instant dx,dy)
+    Constructeur qui initialise ce point, sa direction, et lui donne un nom
+    il se déplace avec l'appel des fonctions de déplacement,
+    ses coords sont mises à jour après chaque déplacement.
+    
+    '''
 
-	def __init__ (self, posx, posy, direction, maxspeed, speed=None) :
-		"""
-		float x float x float x float x float -> Robot
-		- starting positions (x and y)
-		- maximum speed and initial speed (optionnal, by default 0)
-		- direction of the Robot in radian 
-		"""
-		self.posx = posx
-		self.posy = posy
-		self.maxspeed = maxspeed
-		self.direction = direction 
-		if speed == None:
-			self.speed = 0
-		else:
-			self.speed = speed
+    
+    
+    def __init__(self, x, y, nom):
+        self.x= x
+        self.y= y
+        self.nom= nom
+        self.dx= 1 #initialisation de la direction à [1,0] (à droite)
+        self.dy= 0
+        
+        
+    def affiche(self):
+        print("Robot [ x=", self.x, "; y=", self.y, "]")
 
+        
+    def getX(self):
+        return self.x
+    
+    def getY(self):
+        return self.y
+    
+    
+    def getDX(self):
+        return self.dx
+    
+    def getDY(self):
+        return self.dy
 
-	def accelerate (self, acc, dt) :
-		"""
-		float x float ->
-		calculate new speed
-		dt is the time step
-		doesn't modify direction
-		"""
-		self.speed = self.speed + acc*dt
-		return
+    
+    def setPos(self, newx, newy):
+        self.x= newx
+        self.y= newy
+        
+    def setDir(self, newdx, newdy):
+        self.dx= newdx
+        self.dy= newdy
 
+    
+    #avance selon la direction (dx,dy)
+    def avance(self):
+        self.setPos(self.x+self.dx, self.y+self.dy)
+        
+    def recule(self): #si le robot fait marche arrière
+        self.setPos(self.x-self.dx, self.y-self.dy)
+        
+    '''
+    def tourneDroite(self):
+        newdx= self.dx
+        newdy= self.dy
+        self.setDir(newdx, newdy)
+    '''
+    
+        
+r= Robot(1,1,"rob")
+r.affiche()
+print(r.getDX())
+    
+        
+        
+    
 
-	def turn_left(self, angle):
-		"""
-		float ->
-		calculate nex direction direction
-		doesn't modify speed
-		angle in degree, converted in radian
-		"""
-		self.direction = self.direction+angle
-		return
-		
-		
-	def turn_right(self, angle):
-		"""
-		float ->
-		calculate nex direction direction
-		doesn't modify speed
-		angle in degree, converted in radian
-		"""
-		self.direction = self.direction-angle
-		return
-
-
-	def move(self,dt):
-		"""
-		float ->
-		calculate new positions x and y after dt (time step)
-		using the speed and direction
-		"""
-		self.posx = self.posx + dt * math.cos(self.direction) * self.speed
-		self.posy = self.posy + dt * math.sin(self.direction) * self.speed
-		return
-
-
-	def position_x(self):
-		"""
-		return the position x
-		"""
-		return self.posx
-
-
-	def position_y(self):
-		"""
-		return the position y
-		"""
-		return self.posy
-
-
-	def printAll(self):
-		"""
-		print all parameters
-		"""
-		speedx = self.speed*math.cos(self.direction)
-		speedy = self.speed*math.sin(self.direction)
-		angle = self.direction * (180/math.pi)
-		print " pos = [",self.posx,",",self.posy,"]"
-		print " speed = ",self.speed
-		print "        speedx = ",speedx," ,  speedy = ",speedy
-		print " angle direction(°) = ",angle
-		print ""
-		return		
-
-		
-
+        
