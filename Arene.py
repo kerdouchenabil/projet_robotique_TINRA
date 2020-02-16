@@ -7,10 +7,22 @@ class Arene:
 		"""
 		cree l'arene avec pour attribut:
 		- sa dimension avec sa longueur (selon x) et sa largeur (selon y)
-		- les robots presents dessus
-		- les obstacles (murs)
+		- liste des robots, par defaut: liste vide 
+		- liste des obstacles (murs), par defaut: liste vide
 		"""
 		self.longueur = longueur
 		self.largeur = largeur
 		self.listeRobot = Robot
 		self.listeObst = listeObst
+
+
+
+#-------------------------------------Setter-------------------------------------
+
+	def setTaille(self,x,y):
+		"""
+		modifie les dimensions de l'arene
+		"""
+		self.longueur = x
+		self.largeur = y
+		return
