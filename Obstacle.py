@@ -14,3 +14,28 @@ class Obstacle:
 		self.y0 = y0
 		self.dimx = dimx
 		self.dimy = dimy
+
+
+
+
+#-------------------------------------Getter-------------------------------------
+
+	def getObstaclePosX(self):
+		return self.x0
+	
+
+	def getObstaclePosY(self):
+		return self.y0
+
+	def getDimX(self):
+		return self.dimx
+
+	def getDimY(self):
+		return self.dimy
+
+
+
+#-------------------------------------Setter-------------------------------------
+
+
+
