@@ -16,6 +16,9 @@ class Obstacle:
 		self.dimy = dimy
 
 
+#------------------------------------Fonction-----------------------------------
+
+	
 
 
 #-------------------------------------Getter-------------------------------------
@@ -23,7 +26,6 @@ class Obstacle:
 	def getObstaclePosX(self):
 		return self.x0
 	
-
 	def getObstaclePosY(self):
 		return self.y0
 
@@ -36,6 +38,24 @@ class Obstacle:
 
 
 #-------------------------------------Setter-------------------------------------
+
+	def setObstaclePos(self,x,y):
+		"""
+		modifie la position de l'obstacle
+		"""
+		self.x0 = x
+		self.y0 = y
+		return
+
+	def setObstavleDim(self,x,y):
+		"""
+		modifie les dimensions de l'obstacle
+		"""
+		self.dimx = x
+		self.dimy = y
+		return
+
+
 
 
 
