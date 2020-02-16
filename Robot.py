@@ -79,16 +79,44 @@ class Robot:
 		"""
 		return self.speed
 
-	#setter
+
+#-------------------------------------Setter-------------------------------------
+
+
 	def setPos(self,posx,posy):
+		"""
+		modifie les positions x et y
+		"""
 		self.posx=posx
 		self.posy=posy
+
+	def setPosX(self,posx):
+		"""
+		modifie uniquement la position x
+		"""
+		self.posx=posx
+
+	def setPos(self,posy):
+		"""
+		modifie uniquement la position x
+		"""
+		self.posy=posy
+
 	
 	def setDirection(self,direction)
+		"""
+		modifie la direction (parametre en radian)
+		"""
 		self.direction=direction
 		
 	def setVit(self,vit):
+		"""
+		modifie la vitesse (module du vecteur)
+		"""
 		self.speed=vit
+
+
+
 	
 	def printAll(self):
 		"""
