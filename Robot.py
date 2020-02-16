@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import math 
-
+from Obstacle import Obstacle
 
 
 
@@ -57,6 +57,37 @@ class Robot:
 		self.posx = self.posx + dt * math.cos(self.direction) * self.speed
 		self.posy = self.posy + dt * math.sin(self.direction) * self.speed
 		return
+
+
+#------------------------------fonction pour collisions--------------------------
+
+	def coordinateCollision(self,obstacle,limitx,limity,dt):
+		"""
+		calcule les coordonnees de collisions avec l'obstacle et les retournent 
+		sous forme de liste
+		cette liste est vide s'il n'y a pas eu de collisions
+		"""
+		i = 1
+		listePos = []
+		factx = self.speed* math.cos(self.direction) * dt
+		facty = self.speed* math.sin(self.direction) * dt
+
+		while((i*factx <= limitx) and (factx*i <= limity) and (facty*i >= limitx) and (facty*i >= limitx)):
+			x = self.posx + dt * factx
+			y = self.posy + dt * facty
+			
+			if((x >= (obstacle.x0 - obstacle.dimx/2)) and (x <= (obstacle.x0 + obstacle.dimx/2))) :
+				if ((y >= (obstacle.y0 - obstacle.dimy/2)) and (y <= (obstacle.y0 + obstacle.dimy/2))):
+					listePos = [x,y]
+					break
+			i +=1
+
+		
+		return listePos
+
+			
+
+
 
 
 #-------------------------------------Getter-------------------------------------

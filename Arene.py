@@ -17,9 +17,17 @@ class Arene:
 
 
 
+
+
+#--------------------------------fonctions ajout--------------------------------
+
+
+		
+
+
 #-------------------------------------Setter-------------------------------------
 
-	def setTaille(self,x,y):
+	def setAreneDimension(self,x,y):
 		"""
 		modifie les dimensions de l'arene
 		"""
