@@ -19,6 +19,9 @@ class Robot:
 		self.speed = speed
 
 
+#---------------------------------Mouvements---------------------------------
+
+
 	def accelerate (self, acc, dt) :
 		"""
 		float x float ->
@@ -27,37 +30,27 @@ class Robot:
 		self.speed = self.speed + acc*dt
 		return
 
-	def turn_left(self, angle):
+	def turn(self, angle):
 		"""
 		float ->
-		calculate nex direction direction
-		doesn't modify speed
-		angle in degree, converted in radian
+		calcule la nouvelle direction du vecteur vitesse, permet au robot
+		de tourner d'un certain angle (gauche si positif, droit si negatif)
 		"""
 		self.direction = self.direction+angle
-		return
-		
-		
-	def turn_right(self, angle):
-		"""
-		float ->
-		calculate nex direction direction
-		doesn't modify speed
-		angle in degree, converted in radian
-		"""
-		self.direction = self.direction-angle
 		return
 
 
 	def move(self,dt):
 		"""
 		float ->
-		calculate new positions x and y after dt (time step)
-		using the speed and direction
+		calcule les nouvelles positions en x et y du robot
 		"""
 		self.posx = self.posx + dt * math.cos(self.direction) * self.speed
 		self.posy = self.posy + dt * math.sin(self.direction) * self.speed
 		return
+
+
+#-------------------------------------Getter-------------------------------------
 
 
 	def position_x(self):
