@@ -6,13 +6,15 @@ import math
 
 class Robot:
 
-	def __init__ (self, posx, posy, direction, speed=0) :
+	def __init__ (self,robotID, posx, posy, direction, speed=0) :
 		"""
-		float x float x float x float x float -> Robot
+		String x float x float x float x float -> Robot
+		- nom du Robot
 		- position de depart: posx et posy
 		- direction: angle du vecteur vitesse (en radian)
 		- vitesse de depart (nulle par defaut): speed
 		"""
+		self.robotID = robotID
 		self.posx = posx
 		self.posy = posy
 		self.direction = direction 
@@ -79,6 +81,12 @@ class Robot:
 		"""
 		return self.speed
 
+	def getRobotID(self):
+		"""
+		recupere le nom du robot
+		"""
+		return self.robotID
+
 
 #-------------------------------------Setter-------------------------------------
 
@@ -103,7 +111,7 @@ class Robot:
 		self.posy=posy
 
 	
-	def setDirection(self,direction)
+	def setDirection(self,direction):
 		"""
 		modifie la direction (parametre en radian)
 		"""
@@ -114,6 +122,12 @@ class Robot:
 		modifie la vitesse (module du vecteur)
 		"""
 		self.speed=vit
+
+	def setRobotID(self,new_name):
+		"""
+		modifie le nom du robot
+		"""
+		self.robotID = new_name
 
 
 
