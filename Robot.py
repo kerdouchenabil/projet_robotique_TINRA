@@ -6,21 +6,17 @@ import math
 
 class Robot:
 
-	def __init__ (self, posx, posy, direction, maxspeed, speed=None) :
+	def __init__ (self, posx, posy, direction, speed=0) :
 		"""
 		float x float x float x float x float -> Robot
-		- starting positions (x and y)
-		- maximum speed and initial speed (optionnal, by default 0)
-		- direction of the Robot in radian 
+		- position de depart: posx et posy
+		- direction: angle du vecteur vitesse (en radian)
+		- vitesse de depart (nulle par defaut): speed
 		"""
 		self.posx = posx
 		self.posy = posy
-		self.maxspeed = maxspeed
 		self.direction = direction 
-		if speed == None:
-			self.speed = 0
-		else:
-			self.speed = speed
+		self.speed = speed
 
 
 	def accelerate (self, acc, dt) :
