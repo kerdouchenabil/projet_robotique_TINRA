@@ -22,14 +22,10 @@ class Robot:
 	def accelerate (self, acc, dt) :
 		"""
 		float x float ->
-		calculate new speed
-		dt is the time step
-		doesn't modify direction
+		acceleration (freinage si acc negatif): modification de la vitesse
 		"""
 		self.speed = self.speed + acc*dt
 		return
-	def freiner(self):
-		self.setVit(0)
 
 	def turn_left(self, angle):
 		"""
