@@ -19,6 +19,8 @@ class Robot:
 		self.posy = posy
 		self.direction = direction 
 		self.speed = speed
+		self.optionPrint = True
+		
 
 
 #---------------------------------Mouvements---------------------------------
@@ -30,6 +32,8 @@ class Robot:
 		acceleration (freinage si acc negatif): modification de la vitesse
 		"""
 		self.speed = self.speed + acc*dt
+		if(optionPrint):
+			print("le robot a accelere de ",acc)
 		return
 
 	def turn(self, angle):
@@ -39,6 +43,9 @@ class Robot:
 		de tourner d'un certain angle (gauche si positif, droit si negatif)
 		"""
 		self.direction = self.direction+angle
+		if(optionPrint):
+			angleDegre = angle * (180/math.pi)
+			print("le robot a tourne d un angle de ",angleDegre)
 		return
 
 
@@ -130,21 +137,41 @@ class Robot:
 		self.robotID = new_name
 
 
+#-----------------------------------setOption-------------------------------
+
+	def setOptionPrintRobot(self,affiche):
+		"""
+		choisit ou non d'afficher les informations du robot sur le terminal
+		a chaque pas de temps
+			False -> n'affiche pas
+			True  -> affiche
+		"""
+		self.optionPrint = affiche
+
+
+#-----------------------------------print-----------------------------------
 
 	
 	def printAll(self):
 		"""
-		print all parameters
+		affiche toutes les informations sur le Robot"
 		"""
 		speedx = self.speed*math.cos(self.direction)
 		speedy = self.speed*math.sin(self.direction)
 		angle = self.direction * (180/math.pi)
-		print " pos = [",self.posx,",",self.posy,"]"
-		print " speed = ",self.speed
-		print "        speedx = ",speedx," ,  speedy = ",speedy
-		print " angle direction(°) = ",angle
-		print ""
+		if(optionPrint):
+			print ("")
+			print ("---------------------------------------------------------")
+			print (" nom du Robot: ",self.robotID)
+			print (" position = [",self.posx,",",self.posy,"]")
+			print (" vitesse = ",self.speed)
+			print (" direction de la vitesse(°) = ",angle)
+			print ("---------------------------------------------------------")
+			print ("")
 		return		
+
+
+	
 
 		
 
