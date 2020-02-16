@@ -53,26 +53,31 @@ class Robot:
 #-------------------------------------Getter-------------------------------------
 
 
-	def position_x(self):
+	def getPosX(self):
 		"""
-		return the position x
+		retourne la position x
 		"""
 		return self.posx
 
 
-	def position_y(self):
+	def getPosY(self):
 		"""
-		return the position y
+		retourne the position y
 		"""
 		return self.posy
 	
-	#getter
-	def getPos(self):
-		#return (self.posx,self.posy)
-	
 	
 	def getDirection(self):
+		"""
+		retourne la direction du vecteur vitesse en radian
+		"""
 		return self.direction
+
+	def getVitesse(self):
+		"""
+		retourne le module du vecteur vitesse
+		"""
+		return self.speed
 
 	#setter
 	def setPos(self,posx,posy):
