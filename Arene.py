@@ -20,10 +20,18 @@ class Arene:
 
 
 #--------------------------------fonctions ajout--------------------------------
-
-
-		
-
+	
+	def addObstacle(self, obs):
+		'''
+		teste si l'objet est de la Classe Obstacle, si oui
+		ajoute un obstacle a la liste des obstacles de l'Arene
+		'''
+		if( isinstance(obs, Obstacle) ):
+			self.listeObst.append(obs)
+			print("Obstacle ajouté a la listeObst")
+		else:
+			print("ajout pas possible dans listeObst")
+			
 
 #-------------------------------------Setter-------------------------------------
 
