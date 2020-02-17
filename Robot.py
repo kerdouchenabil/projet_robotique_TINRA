@@ -32,8 +32,12 @@ class Robot:
 		acceleration (freinage si acc negatif): modification de la vitesse
 		"""
 		self.speed = self.speed + acc*dt
+		
 		if(optionPrint):
-			print("le robot a accelere de ",acc)
+			if (acc>0):
+				print("le robot a accelere de ",acc)
+			else:
+				print("le robot a freine de ", acc)
 		return
 
 	def turn(self, angle):
