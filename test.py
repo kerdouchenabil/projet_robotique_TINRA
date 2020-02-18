@@ -1,7 +1,7 @@
 from Robot import Robot
 import math
 
-rob = Robot(0,0,0,20,1)
+rob = Robot("Rob",0,0,0,1)
 
 rob.printAll()
 
