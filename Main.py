@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import Robot
 import Arene
 import Obstacle
@@ -23,20 +25,4 @@ areneLongueur= 200
 areneLargeur= 200
 
 
-'''
-    creation du robot ID=0  position=[5;5]  direction=0 (droite)  vitesse=0
-'''
-rob = Robot()
-
-
-'''
-    creation d'un obstacle representant un mur
-'''
-
-
-
-'''
-    creation d'une arene
-'''
-arene = Arene(areneLongeur, areneLargeur)
 
