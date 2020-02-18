@@ -55,3 +55,25 @@ class Arene:
 		self.longueur = x
 		self.largeur = y
 		return
+	
+	
+	
+#-------------------------------------Getter-------------------------------------
+
+	def getRobot0(self) :
+		'''
+			retourne le premier robot de la liste listeRobot[0]
+			si listeRobot non vide
+			(facilite le travail avec un seul robot)
+		'''
+		if( not self.listeRobot ):
+			print("listeRobot vide !")
+			return
+		else:
+			return self.listeRobot[0]
+		
+	
+
+
+
+
