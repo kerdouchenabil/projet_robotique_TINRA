@@ -81,7 +81,7 @@ class Arene:
 		"""
 		print("Arene: longueur=", self.longueur, " largeur=", self.largeur)
 		print("Nombre robots=", len(self.listeRobot), "Nombre obstacles=", len(self.listeObst))
-		# on peut completer avec les robot.printAll
+		# on peut completer avec les robot.printRobot
 		return	
 
 
