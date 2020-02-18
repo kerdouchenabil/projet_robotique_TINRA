@@ -190,7 +190,7 @@ class Robot:
 #-----------------------------------print-----------------------------------
 
 	
-	def printAll(self):
+	def printRobot(self):
 		"""
 		affiche toutes les informations sur le Robot"
 		"""
