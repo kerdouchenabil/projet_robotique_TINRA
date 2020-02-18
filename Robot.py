@@ -92,8 +92,58 @@ class Robot:
 		
 		return listePos
 
-			
+	def findIntersection(coor1,coor2,coor3,coor4):
+		"""
+		list[float] x list[float] x list[float] x list[float] -> list[float]
+		trouver le point d'intersection de deux droites L1, L2:
+		L1 est trace utilisant les points de coor1 et coor2
+		L2 est trace utilisant les points de coor3 et coor4
+		coorX[0] est la coordonnee x, coorX[1] la coordonne y 
+		"""
+		
+		#on calcule le point x
+		x = (coor1[0]*coor2[1]-coor1[1]*coor2[0])*(coor3[0]-coor4[0]) - (coor1[0]-coor2[0])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
+		x = x/((coor1[0] - coor2[0])*(coor3[1]-coor4[1]) - (coor1[1] -coor2[1])*(coor3[0] - coor4[0]))
 
+		#on calcule le point y
+		y = (coor1[0]*coor2[1]-coor1[1]*coor2[0])*(coor3[1]-coor4[1]) - (coor1[1]-coor2[1])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
+		y = y/((coor1[0] - coor2[0])*(coor3[1]-coor4[1]) - (coor1[1] -coor2[1])*(coor3[0] - coor4[0]))
+
+		coor= [x,y]
+	
+		return coor
+
+
+	def stayInObstacle(obstacle, listPos):
+		return
+
+	def calcDistance2Points(listPos1,listPos2):
+		return
+
+
+
+	def pointsCollision(self,obstacle,listPos):
+		"""
+		list[float]-> list[float]
+		obtenir les coordonnees du point de collision à partir de points appartenant a l'obstacle
+		et se trouvant sur la trajectoire du robot
+		"""
+
+		#on recupere les 4 points delimitants l'obstacle
+		obsPosX1Y1 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
+		obsPosX1Y2 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
+		obsPosX2Y1 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
+		obsPosX1Y2 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
+
+		if(listPos[0] != posx):
+			
+		
+		return
+		
+
+	
+	def distanceRobotObs(self,arene):
+		return		
 
 
 
