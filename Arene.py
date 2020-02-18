@@ -23,7 +23,7 @@ class Arene:
 	
 	def addObstacle(self, obs):
 		'''
-		teste si l'objet est de la Classe Obstacle, si oui
+		teste si l'objet est de Classe Obstacle, si oui
 		ajoute un obstacle a la liste des obstacles de l'Arene
 		'''
 		if( isinstance(obs, Obstacle) ):
@@ -31,7 +31,20 @@ class Arene:
 			print("Obstacle ajouté a la listeObst")
 		else:
 			print("ajout pas possible dans listeObst")
+	
+	
+	def addRobot(self, rob):
+		'''
+		teste si l'objet est de Classe Robot, si oui
+		ajoute le Robot a la liste des Robots de l'Arene
+		'''
+		if( isinstance(rob, Robot) ):
+			self.listeRobot.append(rob)
+			print("Robot ajouté a la listeRobot")
+		else:
+			print("ajout pas possible dans Robot")
 			
+					
 
 #-------------------------------------Setter-------------------------------------
 
