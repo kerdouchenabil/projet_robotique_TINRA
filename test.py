@@ -9,7 +9,7 @@ rob.accelerate(2,1)
 
 rob.printAll()
 
-rob.turn_left(math.pi/2)
+rob.turn(math.pi/2)
 
 rob.printAll()
 

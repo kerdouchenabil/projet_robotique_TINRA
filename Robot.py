@@ -33,7 +33,7 @@ class Robot:
 		"""
 		self.speed = self.speed + acc*dt
 		
-		if(optionPrint):
+		if(self.optionPrint):
 			if (acc>0):
 				print("le robot a accelere de ",acc)
 			else:
@@ -47,7 +47,7 @@ class Robot:
 		de tourner d'un certain angle (gauche si positif, droit si negatif)
 		"""
 		self.direction = self.direction+angle
-		if(optionPrint):
+		if(self.optionPrint):
 			angleDegre = angle * (180/math.pi)
 			print("le robot a tourne d un angle de ",angleDegre)
 		return
@@ -197,7 +197,7 @@ class Robot:
 		speedx = self.speed*math.cos(self.direction)
 		speedy = self.speed*math.sin(self.direction)
 		angle = self.direction * (180/math.pi)
-		if(optionPrint):
+		if(self.optionPrint):
 			print ("")
 			print ("---------------------------------------------------------")
 			print (" nom du Robot: ",self.robotID)
