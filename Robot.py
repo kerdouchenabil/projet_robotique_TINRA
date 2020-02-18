@@ -61,18 +61,21 @@ class Robot:
 
 #------------------------------fonction pour collisions--------------------------
 
-	def coordinateCollision(self,obstacle,limitx,limity,dt):
+	def possibleCollision(self,obstacle,limitx,limity):
 		"""
-		calcule les coordonnees de collisions avec l'obstacle et les retournent 
-		sous forme de liste
+		Obstacle x float x float -> list[float]
+		avec pour parametres, l'obstacle et la distance x et y du champ de vision du robot 
+		(par exemple, les coordonnees de l'arene
+		calcule les coordonnees de collisions avec l'obstacle et retourne les points en x et y
+		lui appartenant dans la trajectoire de l'obstacle, sous forme de liste
 		cette liste est vide s'il n'y a pas eu de collisions
 		"""
 		i = 1
 		listePos = []
-		factx = self.speed* math.cos(self.direction) * dt
-		facty = self.speed* math.sin(self.direction) * dt
+		factx = (obstacle.dimx/10)* math.cos(self.direction)
+		facty = (obstacle.dimx/10)* math.sin(self.direction)
 
-		while((i*factx <= limitx) and (factx*i <= limity) and (facty*i >= limitx) and (facty*i >= limitx)):
+		while((i*factx <= limitx) and (factx*i >= -limitx) and (facty*i <= limity) and (facty*i >= -limity)):
 			x = self.posx + dt * factx
 			y = self.posy + dt * facty
 			
