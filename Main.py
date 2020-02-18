@@ -25,5 +25,20 @@ areneLongueur= 200
 areneLargeur= 200
 
 
+'''
+    creation du robot ID=0  position=[5;5]  direction=0 (droite)  vitesse=0
+'''
+rob = Robot(robID, robPosX, robPosY, robDir, robVitesse)
 
+
+'''
+    creation d'un obstacle representant un mur
+'''
+
+
+
+'''
+    creation d'une arene
+'''
+arene = Arene(areneLongeur, areneLargeur)
 
