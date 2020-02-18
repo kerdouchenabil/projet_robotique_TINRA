@@ -72,8 +72,16 @@ class Arene:
 		else:
 			return self.listeRobot[0]
 		
-	
 
+#---------------------------------Affichage_text--------------------------------
 
+	def printAll(self):
+		"""
+		affiche les informations de l'Arene"
+		"""
+		print("Arene: longueur=", self.longueur, " largeur=", self.largeur)
+		print("Nombre robots=", len(self.listeRobot), "Nombre obstacles=", len(self.listeObst))
+		# on peut completer avec les robot.printAll
+		return	
 
 
