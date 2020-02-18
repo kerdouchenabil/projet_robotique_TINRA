@@ -12,7 +12,7 @@ class Arene:
 		"""
 		self.longueur = longueur
 		self.largeur = largeur
-		self.listeRobot = Robot
+		self.listeRobot = listeRobot
 		self.listeObst = listeObst
 
 
