@@ -12,7 +12,7 @@ class Arene:
 		"""
 		self.longueur = longueur
 		self.largeur = largeur
-		self.listeRobot = Robot
+		self.listeRobot = listeRobot
 		self.listeObst = listeObst
 
 
@@ -20,10 +20,31 @@ class Arene:
 
 
 #--------------------------------fonctions ajout--------------------------------
-
-
-		
-
+	
+	def addObstacle(self, obs):
+		'''
+		teste si l'objet est de Classe Obstacle, si oui
+		ajoute un obstacle a la liste des obstacles de l'Arene
+		'''
+		if( isinstance(obs, Obstacle) ):
+			self.listeObst.append(obs)
+			print("Obstacle ajouté a la listeObst")
+		else:
+			print("ajout pas possible dans listeObst")
+	
+	
+	def addRobot(self, rob):
+		'''
+		teste si l'objet est de Classe Robot, si oui
+		ajoute le Robot a la liste des Robots de l'Arene
+		'''
+		if( isinstance(rob, Robot) ):
+			self.listeRobot.append(rob)
+			print("Robot ajouté a la listeRobot")
+		else:
+			print("ajout pas possible dans Robot")
+			
+					
 
 #-------------------------------------Setter-------------------------------------
 
@@ -34,3 +55,33 @@ class Arene:
 		self.longueur = x
 		self.largeur = y
 		return
+	
+	
+	
+#-------------------------------------Getter-------------------------------------
+
+	def getRobot0(self) :
+		'''
+			retourne le premier robot de la liste listeRobot[0]
+			si listeRobot non vide
+			(facilite le travail avec un seul robot)
+		'''
+		if( not self.listeRobot ):
+			print("listeRobot vide !")
+			return
+		else:
+			return self.listeRobot[0]
+		
+
+#---------------------------------Affichage_text--------------------------------
+
+	def printAll(self):
+		"""
+		affiche les informations de l'Arene"
+		"""
+		print("Arene: longueur=", self.longueur, " largeur=", self.largeur)
+		print("Nombre robots=", len(self.listeRobot), "Nombre obstacles=", len(self.listeObst))
+		# on peut completer avec les robot.printAll
+		return	
+
+

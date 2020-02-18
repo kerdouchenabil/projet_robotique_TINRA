@@ -46,7 +46,7 @@ class Obstacle:
 		self.y0 = y
 		return
 
-	def setObstavleDim(self,x,y):
+	def setObstacleDim(self,x,y):
 		"""
 		modifie les dimensions de l'obstacle
 		"""
