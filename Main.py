@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import Robot
-import Arene
-import Obstacle
+from Robot import Robot
+from Arene import Arene
+from Obstacle import Obstacle
 
 
 '''
@@ -21,8 +21,8 @@ robPosY= 5
 robDir= 0
 robVitesse= 0
 
-areneLongueur= 200
-areneLargeur= 200
+areneLongeur= 400
+areneLargeur= 400
 
 
 '''
@@ -32,8 +32,15 @@ rob = Robot(robID, robPosX, robPosY, robDir, robVitesse)
 
 
 '''
-    creation d'un obstacle representant un mur
+    creation des murs
 '''
+longeurMur=areneLongeur
+largeurMur=10
+mur_haut=Obstacle(longeurMur/2,0+largeurMur/2,longeurMur,largeurMur)
+mur_bas=Obstacle(longeurMur/2,longeurMur-largeurMur/2,longeurMur,largeurMur)
+mur_gauche=Obstacle(0+largeurMur/2,longeurMur/2,largeurMur,longeurMur)
+mur_droite=Obstacle(longeurMur-largeurMur/2,longeurMur/2,largeurMur,longeurMur)
+
 
 
 
@@ -41,4 +48,23 @@ rob = Robot(robID, robPosX, robPosY, robDir, robVitesse)
     creation d'une arene
 '''
 arene = Arene(areneLongeur, areneLargeur)
+
+'''
+ajout du robot et des murs dans l'arene 
+'''
+arene.addObstacle(mur_haut)
+arene.addObstacle(mur_bas)
+arene.addObstacle(mur_gauche)
+arene.addObstacle(mur_droite)
+arene.addRobot(rob)
+
+
+
+arene.printAll()
+print("")
+print("possible collision ")
+print("mur de droite ",rob.possibleCollision(mur_droite,100,100))
+print("mur du bas",rob.possibleCollision(mur_bas,100,100))
+print("mur de gauche ",rob.possibleCollision(mur_gauche,100,100))
+print("mur du haut ",rob.possibleCollision(mur_haut,100,100))
 
