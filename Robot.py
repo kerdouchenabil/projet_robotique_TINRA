@@ -137,16 +137,47 @@ class Robot:
 		obsPosx1y1 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
 		obsPosx1y2 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
 		obsPosx2y1 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
-		obsPosx1y2 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
+		obsPosx2y2 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
 
+		dist = -1
+		coor = []
+
+		coor2 = self.findIntersection(listPos,obsPosx1y1,obsPosx1y2)
+		dist2 = self.distancePointRobot(coor2)
+		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
+			dist = dist2
+			coor = coor2
 		
-			
+
+		coor2 = self.findIntersection(listPos,obsPosx1y2,obsPosx2y2)
+		dist2 = self.distancePointRobot(coor2)
+		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
+			dist = dist2
+			coor = coor2
 		
-		return
+
+		coor2 = self.findIntersection(listPos,obsPosx2y2,obsPosx2y1)
+		dist2 = self.distancePointRobot(coor2)
+		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
+			dist = dist2
+			coor = coor2
+		
+
+
+		coor2 = self.findIntersection(listPos,obsPosx2y1,obsPosx1y1)
+		dist2 = self.distancePointRobot(coor2)
+		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
+			dist = dist2
+			coor = coor2
+
+		return coor
+
 		
 
 	
 	def distanceRobotObs(self,arene):
+
+		
 		return		
 
 
