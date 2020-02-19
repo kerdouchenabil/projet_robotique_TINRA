@@ -19,7 +19,7 @@ class Robot:
 		self.posy = posy
 		self.direction = direction*(math.pi/180)
 		self.speed = speed
-		self._optionPrint = True
+		self._optionAffichageR = True
 		
 
 
@@ -33,7 +33,7 @@ class Robot:
 		"""
 		self.speed = self.speed + acc*dt
 		
-		if(self._optionPrint):
+		if(self._optionAffichageR):
 			if (acc>0):
 				print("le robot a accelere de ",acc)
 			else:
@@ -47,7 +47,7 @@ class Robot:
 		de tourner d'un certain angle (gauche si positif, droit si negatif)
 		"""
 		self.direction = self.direction+(angle*math.pi/180)
-		if(self._optionPrint):
+		if(self._optionAffichageR):
 			print("le robot a tourne d un angle de ",angle)
 		return
 
@@ -195,7 +195,7 @@ class Robot:
 					dist = dist_int
 					coor = listpos
 		
-		if(self._optionPrint):
+		if(self._optionAffichageR):
 			if(dist == -1):
 				print ("")
 				print (" le robot ",self.robotID, "n'a aucun obstacles dans sa trajectoire")
@@ -299,7 +299,7 @@ class Robot:
 			False -> n'affiche pas
 			True  -> affiche
 		"""
-		self._optionPrint = affiche
+		self._optionAffichageR = affiche
 
 
 #-----------------------------------print-----------------------------------
@@ -312,7 +312,7 @@ class Robot:
 		speedx = self.speed*math.cos(self.direction)
 		speedy = self.speed*math.sin(self.direction)
 		angle = self.direction * (180/math.pi)
-		if(self._optionPrint):
+		if(self._optionAffichageR):
 			print ("")
 			print ("---------------------------------------------------------")
 			print (" nom du Robot: ",self.robotID)

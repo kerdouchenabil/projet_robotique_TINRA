@@ -14,6 +14,7 @@ class Arene:
 		self.largeur = largeur
 		self.listeRobot = listeRobot
 		self.listeObst = listeObst
+		self._optionAffichageA = True
 
 
 
@@ -80,7 +81,32 @@ class Arene:
 		return self.listeObst
 
 
-		
+#-----------------------------------setOption-------------------------------
+
+	def setOptionPrintArene(self,affiche):
+		"""
+		choisit ou non d'afficher les informations de l'arene sur le terminal
+		a chaque pas de temps
+			False -> n'affiche pas
+			True  -> affiche
+		"""
+		self._optionAffichageA = affiche
+
+
+	def setOptionPrint(self, afficheA,afficheR,afficheO):
+		"""
+		choisit ou non d'afficher les informations sur l'arene, ses robots et ses
+		obstacles; les 3 attributs sont pour controler respectivement: 
+			(affichage Arene, affichage Robot, affichage Obstacle)
+			False -> n'affiche pas
+			True  -> affiche
+		"""	
+		for robot in listeRobot:
+			robot.setOptionPrintRobot(afficheR)
+		for obstacle in listeObst:
+			obst.setOptionPrintObstacle(afficheO)
+		self.setOptionPrintArene(afficheA)
+			
 
 #---------------------------------Affichage_text--------------------------------
 
@@ -88,8 +114,9 @@ class Arene:
 		"""
 		affiche les informations de l'Arene"
 		"""
-		print("Arene: longueur=", self.longueur, " largeur=", self.largeur)
-		print("Nombre robots=", len(self.listeRobot), "Nombre obstacles=", len(self.listeObst))
+		if(self._optionAffichageA):
+			print("Arene: longueur=", self.longueur, " largeur=", self.largeur)
+			print("Nombre robots=", len(self.listeRobot), "Nombre obstacles=", len(self.listeObst))
 		# on peut completer avec les robot.printRobot
 		return	
 

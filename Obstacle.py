@@ -14,6 +14,7 @@ class Obstacle:
 		self.y0 = y0
 		self.dimx = dimx
 		self.dimy = dimy
+		self._optionAffichageO = True
 
 
 #------------------------------------Fonction-----------------------------------
@@ -40,8 +41,8 @@ class Obstacle:
         Obstacle[x= , y=  , larg= , long=  ]
 
         """
-
-        print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
+	if(self._optionAffichageO):
+        	print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
 
 
 
@@ -80,6 +81,16 @@ class Obstacle:
 		return
 
 
+#-----------------------------------setOption-------------------------------
+
+	def setOptionPrintObstacle(self,affiche):
+		"""
+		choisit ou non d'afficher les informations de l obstacle sur le terminal
+		a chaque pas de temps
+			False -> n'affiche pas
+			True  -> affiche
+		"""
+		self._optionAffichageO = affiche
 
 
 

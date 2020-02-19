@@ -1,4 +1,52 @@
-pour la classe Robot:
+
+#-----------------------------#
+# pour controler l'affichage: #
+#---------------------------- #
+
+		
+
+	activer/desactiver l'affichage des informations du robot, de l'obstacle et l'arene
+	sur le terminal:
+
+		setOptionPrintRobot(affiche)
+		setOptionPrintObstacle(affiche)
+		setOptionPrintArene(affiche)
+		
+		affiche = True, on affiche ces informations à chaque appel de printRobot
+		affiche = False, on ne les affiche pas
+		(par defaut, lors de la creation du robot, affiche = True)
+
+		ex: 
+		rob.setOptionPrintRobot(False)
+			la fonction printRobot n'affichera rien meme si on l'appelle 
+		arene.setOptionPrintArene(True)
+			on affichera les informations de l'arene lorqu'on fera appel à sa fonction print
+		obstacle.setOptionPrintObstacle(False)
+			on ne fait pas d'affichage concernant les obstacles
+
+
+	activer/desactiver l'affichage pour une arene et tous ses robots et obstacles:
+
+		setOptionPrint(afficheA,afficheR,afficheO)
+		
+		combinaison des trois fonctions precedentes:
+			- afficheA -> arene
+			- afficheR -> tous les robots de cette arene
+			- afficheO -> tous les obstacles de cette arene
+
+		ex:
+		arene.setOptionPrint(False,True,False)
+			affiche uniquement les informations sur le robot
+			rien ne s'affichera sur les obstacles et l'arene 
+
+
+#-------------------------------------------------------------------------------
+
+#-----------------------#
+# pour la classe Robot: #
+#---------------------- #
+
+#----------------------------------creer--------------------------------------
 
 	creer un robot rob:
 		Robot(nom,posx,posy,angle,vitesse)
@@ -61,7 +109,6 @@ pour la classe Robot:
 		- l'arene crée doit contenir une liste d'obstacles 
 		si la fonction renvoie une valeure egale à -1 alors aucune obstacle ne se
 		trouve sur sa trajectoire
-		
 
 
 #---------------------------------affichage-------------------------------------
@@ -78,20 +125,45 @@ pour la classe Robot:
 			 vitesse =  2
 			 direction de la vitesse(°) =  90
 			---------------------------------------------------------
+	
 
+#-------------------------------------------------------------------------------	
+
+
+#-----------------------#
+# pour la classe Arene: #
+#---------------------- #
+
+#----------------------------------creer--------------------------------------
+	creer une arene arena:
+		Robot(nom,posx,posy,angle,vitesse)
 		
-
-	activer/desactiver l'affichage des informations du robot sur le terminal:
-		setOptionPrintRobot(affiche)
+		String x float x float x float x float -> Robot
+		- nom du Robot
+		- position de depart: posx et posy
+		- angle du vecteur vitesse (en degre)
+		- vitesse de depart (nulle par defaut)
 		
-		affiche = True, on affiche ces informations à chaque appel de printRobot
-		affiche = False, on ne les affiche pas
-		(par defaut, lors de la creation du robot, affiche = True)
-
-		ex: rob.setOptionPrintRobot(False)
-		la fonction printRobot n'affichera rien meme si on l'appelle
+		ex:
+		arena = Robot("robert",0.2,1.6,90,2)
 
 
+
+
+#---------------------------------affichage-------------------------------------
+
+	afficher les informations de l'arene sur le terminal:
+		printAll()
+		
+		ex: 
+		arene.printRobot()
+
+	
+
+#-------------------------------------------------------------------------------
+
+	
+		
 
 
 			
