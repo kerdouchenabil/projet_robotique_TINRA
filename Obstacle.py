@@ -31,6 +31,8 @@ class Obstacle:
 			if ((y >= ymin) and (y <=ymax)):
 				return True 
 		return False
+	
+	
 	def printObstacle(self):
 
         """Affichage d'un Obstacle au format :
