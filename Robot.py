@@ -66,28 +66,28 @@ class Robot:
 
 
 
-	def findIntersection(coor1,coor2,coor3,coor4):
+	def findIntersection(self,coor2,coor3,coor4):
 		"""
 		list[float] x list[float] x list[float] x list[float] -> list[float]
 		trouver le point d'intersection de deux droites L1, L2:
-		L1 est trace utilisant les points de coor1 et coor2
+		L1 est trace utilisant les points de Robot et coor2
 		L2 est trace utilisant les points de coor3 et coor4
 		coorX[0] est la coordonnee x, coorX[1] la coordonne y 
 		"""
 		
 		#on s'assure que L1 et L2 ne soit pas parallele sinon la liste est vide:
-		zero = (coor1[0]-coor2[0])*(coor3[1]-coor4[1]) - (coor1[1]- coor2[1])*(coor3[0]-coor4[0])
+		zero = (self.posx-coor2[0])*(coor3[1]-coor4[1]) - (self.posy- coor2[1])*(coor3[0]-coor4[0])
 		if (zero == 0):
 			coor = []
 			return 	coor	
 		
 		#on calcule le point x
-		x = (coor1[0]*coor2[1]-coor1[1]*coor2[0])*(coor3[0]-coor4[0]) - (coor1[0]-coor2[0])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
-		x = x/((coor1[0] - coor2[0])*(coor3[1]-coor4[1]) - (coor1[1] -coor2[1])*(coor3[0] - coor4[0]))
+		x = (self.posx*coor2[1]-self.posy*coor2[0])*(coor3[0]-coor4[0]) - (self.posx-coor2[0])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
+		x = x/((self.posx - coor2[0])*(coor3[1]-coor4[1]) - (self.posy -coor2[1])*(coor3[0] - coor4[0]))
 
 		#on calcule le point y
-		y = (coor1[0]*coor2[1]-coor1[1]*coor2[0])*(coor3[1]-coor4[1]) - (coor1[1]-coor2[1])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
-		y = y/((coor1[0] - coor2[0])*(coor3[1]-coor4[1]) - (coor1[1] -coor2[1])*(coor3[0] - coor4[0]))
+		y = (self.posx*coor2[1]-self.posy*coor2[0])*(coor3[1]-coor4[1]) - (self.posy-coor2[1])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
+		y = y/((self.posx - coor2[0])*(coor3[1]-coor4[1]) - (self.posy -coor2[1])*(coor3[0] - coor4[0]))
 
 		coor= [x,y]
 	
@@ -121,8 +121,8 @@ class Robot:
 		return listePos
 
 
-	def calcDistance2Points(listPos1,listPos2):
-		return
+	def distancePointRobot(self,listpos):
+		return math.sqrt((listpos[0] - self.posx)**2 + (listpos[1] - self.posy)**2)
 
 
 
@@ -139,6 +139,7 @@ class Robot:
 		obsPosx2y1 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
 		obsPosx1y2 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
 
+		
 			
 		
 		return

@@ -22,8 +22,13 @@ class Obstacle:
 		"""
 		calcule si le point (x,y) se trouve dans l'obstacle
 		"""
-		if((x >= (self.x0 - self.dimx/2)) and (x <= (self.x0 + self.dimx/2))) :
-			if ((y >= (self.y0 - self.dimy/2)) and (y <= (self.y0 + self.dimy/2))):
+		incertitude = 10**(-6)
+		xmin = self.x0 - (self.dimx/2 *(1 + incertitude))
+		xmax = self.x0 + (self.dimx/2 *(1 + incertitude))
+		ymin = self.y0 - (self.dimy/2 *(1 + incertitude))
+		ymax = self.y0 + (self.dimy/2 *(1 + incertitude))
+		if ((x >= xmin) and (x <= xmax)):
+			if ((y >= ymin) and (y <=ymax)):
 				return True 
 		return False
 
