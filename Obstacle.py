@@ -34,16 +34,20 @@ class Obstacle:
 		return False
 	
 	
+
 	def printObstacle(self):
-
-        	"""Affichage d'un Obstacle au format :
-
-        	Obstacle[x= , y=  , larg= , long=  ]
-
-        	"""
+		"""
+		affiche toutes les informations sur l obstacle"
+		"""
 		if(self._optionAffichageO):
-        		print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
-
+			print ("")
+			print ("---------------------------------------------------------")
+			print (" Obstacle: ",self.robotID)
+			print (" position = [",self.x0,",",self.y0,"]")
+			print (" largeur, longueur =", self.dimy,", ",self.dimx)
+			print ("---------------------------------------------------------")
+			print ("")
+		return	
 
 
 

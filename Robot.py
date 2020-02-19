@@ -47,6 +47,7 @@ class Robot:
 		de tourner d'un certain angle (gauche si positif, droit si negatif)
 		"""
 		self.direction = self.direction+(angle*math.pi/180)
+		self.direction = self.direction % (2*math.pi)
 		if(self._optionAffichageR):
 			print("le robot a tourne d un angle de ",angle)
 		return
