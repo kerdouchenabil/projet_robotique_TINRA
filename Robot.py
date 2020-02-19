@@ -144,8 +144,8 @@ class Robot:
 			y = self.posy + i*facty
 			tof = obstacle.pointInObstacle(x,y)
 			if(tof == True):
-				listePos += [x,y]
-				
+				listePos = [x,y]
+				break
 			i +=1
 		
 		return listePos
