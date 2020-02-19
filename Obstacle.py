@@ -46,6 +46,7 @@ class Obstacle:
 
 
 
+
 #-------------------------------------Getter-------------------------------------
 
 	def getObstaclePosX(self):
