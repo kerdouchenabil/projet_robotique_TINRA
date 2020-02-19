@@ -61,7 +61,37 @@ class Robot:
 		self.posy = self.posy + dt * math.sin(self.direction) * self.speed
 		return
 
-
+	def uptade(self,possibecolG,possibecolD,possibecolH,possibecolB):
+		"""
+		met à jour les coords du robot 
+         """
+		if (len(possibecolG)==0):
+			self.move(0.1)
+			if (len(possibecolD)==0):
+				self.move(0.1)
+				if (len(possibecolH)==0):
+					self.move(0.1)
+					if (len(possibecolB)==0):
+						self.move(0.1)
+		         
+					else:
+						self.turn(180)        
+				else:
+					self.turn(180)
+			else:
+				self.turn(180)
+		         
+		else:
+			self.turn(180)
+            
+		
+		
+            
+		
+              
+             
+		
+			
 #------------------------------fonction pour collisions--------------------------
 
 
@@ -114,8 +144,8 @@ class Robot:
 			y = self.posy + i*facty
 			tof = obstacle.pointInObstacle(x,y)
 			if(tof == True):
-				listePos = [x,y]
-				break
+				listePos += [x,y]
+				
 			i +=1
 		
 		return listePos

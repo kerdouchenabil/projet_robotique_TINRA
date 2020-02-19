@@ -34,14 +34,11 @@ class Obstacle:
 	
 	
 	def printObstacle(self):
-
-        """Affichage d'un Obstacle au format :
-
-        Obstacle[x= , y=  , larg= , long=  ]
-
-        """
-
-        print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
+         '''
+         affiche les informations de l'obstacle 
+         '''
+            
+         print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")       
 
 
 
