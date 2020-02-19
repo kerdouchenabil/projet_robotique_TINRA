@@ -71,6 +71,15 @@ class Arene:
 			return
 		else:
 			return self.listeRobot[0]
+
+	
+	def getListObstacle(self):
+		'''
+		retourne la liste des obstacles
+		'''
+		return self.listeObst
+
+
 		
 
 #---------------------------------Affichage_text--------------------------------
