@@ -122,6 +122,9 @@ class Robot:
 
 
 	def distancePointRobot(self,listpos):
+		'''
+		calcule la distance d un point avec le robot
+		'''
 		return math.sqrt((listpos[0] - self.posx)**2 + (listpos[1] - self.posy)**2)
 
 
@@ -176,9 +179,22 @@ class Robot:
 
 	
 	def distanceRobotObs(self,arene):
-
+		'''
+		retourne la distance de l'obstacle le plus proche qui se trouve au travers de sa trajectoire
+		s'il n'y a pas d'obstacle, la valeur sera negative
+		'''
+		listobst = arene.getListObstacle()
+		dist = -1
+		for obstacle in listobst:
+			listpos = self.possibleCollision(obstacle,arene.longueur, arene.largeur) 
+			if (len(listpos) == 2):  # si obstacle est dans la trajectoire de robot
+				listpos = self.pointsCollision(obstacle,listpos) # calcule le point de collision entre robot et obstacle
+				dist_int = self.distancePointRobot(listpos)  # calcule la distance entre robot et point de collision
+				if (dist_int < dist or dist == -1):
+					dist = dist_int
 		
-		return		
+		
+		return	dist
 
 
 
