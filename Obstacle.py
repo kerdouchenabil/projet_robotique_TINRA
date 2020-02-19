@@ -36,13 +36,13 @@ class Obstacle:
 	
 	def printObstacle(self):
 
-        """Affichage d'un Obstacle au format :
+        	"""Affichage d'un Obstacle au format :
 
-        Obstacle[x= , y=  , larg= , long=  ]
+        	Obstacle[x= , y=  , larg= , long=  ]
 
-        """
-	if(self._optionAffichageO):
-        	print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
+        	"""
+		if(self._optionAffichageO):
+        		print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
 
 
 
