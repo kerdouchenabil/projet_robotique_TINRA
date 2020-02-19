@@ -37,7 +37,7 @@ class Robot:
 			if (acc>0):
 				print("le robot a accelere de ",acc)
 			else:
-				print("le robot a freine de ", acc)
+				print("le robot a freine de ", -acc)
 		return
 
 	def turn(self, angle):
@@ -61,10 +61,11 @@ class Robot:
 		self.posy = self.posy + dt * math.sin(self.direction) * self.speed
 		return
 
+
 	def uptade(self,possibecolG,possibecolD,possibecolH,possibecolB):
 		"""
 		met à jour les coords du robot 
-         """
+        	 """
 		if (len(possibecolG)==0):
 			self.move(0.1)
 			if (len(possibecolD)==0):

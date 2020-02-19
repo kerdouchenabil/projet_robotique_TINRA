@@ -101,6 +101,7 @@
 		la vitesse passera de 2 à 4 (acc*dt = 2*1)
 
 	
+
 	calculer la distance entre le robot et l'obstacle le plus proche se trouvant
 	sur sa trajectoire:
 		distanceRobotObs(arene)
@@ -129,6 +130,33 @@
 
 #-------------------------------------------------------------------------------	
 
+#--------------------------#
+# pour la classe Obstacle: #
+#--------------------------#
+
+#----------------------------------creer--------------------------------------
+	creer un obstacle obst:
+		Obstacle(x,y,dimx,dimy):
+		
+		cree l'obstacle avec pour attribut:
+		- position de son centre en x et y
+		- longueur et largeur selon x et y: dimx et dimy
+
+		ex:
+		obst = Obstacle(0,200,10,100)
+
+
+
+#---------------------------------affichage-------------------------------------
+
+	afficher les informations de l'arene sur le terminal:
+		printObstacle()
+		
+		ex: 
+		obst.printObstacle()
+
+	
+#-------------------------------------------------------------------------------
 
 #-----------------------#
 # pour la classe Arene: #
@@ -136,19 +164,25 @@
 
 #----------------------------------creer--------------------------------------
 	creer une arene arena:
-		Robot(nom,posx,posy,angle,vitesse)
+		Arene(longueur,largeur,listeRobot,listeObst):
 		
-		String x float x float x float x float -> Robot
-		- nom du Robot
-		- position de depart: posx et posy
-		- angle du vecteur vitesse (en degre)
-		- vitesse de depart (nulle par defaut)
-		
+		cree l'arene avec pour attribut:
+		- sa dimension, avec sa longueur (selon x) et sa largeur (selon y)
+		- liste des robots, par defaut: liste vide 
+		- liste des obstacles (murs), par defaut: liste vide
+
 		ex:
-		arena = Robot("robert",0.2,1.6,90,2)
+		arena = Arene(400,400,[],listO)
 
 
+#----------------------------fonction d ajout----------------------------------
 
+	ajouter un robot ou obstacle dans l'arene:
+		addRobot(robot)
+		addObstacle(obstacle)
+
+		ex:
+		arena.addRobot(Robot("roberta",0,0,2,6))
 
 #---------------------------------affichage-------------------------------------
 
@@ -156,10 +190,9 @@
 		printAll()
 		
 		ex: 
-		arene.printRobot()
+		arena.printAll()
 
 	
-
 #-------------------------------------------------------------------------------
 
 	
