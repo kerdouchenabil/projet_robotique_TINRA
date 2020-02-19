@@ -18,7 +18,14 @@ class Obstacle:
 
 #------------------------------------Fonction-----------------------------------
 		
-
+	def pointInObstacle(self,x,y):
+		"""
+		calcule si le point (x,y) se trouve dans l'obstacle
+		"""
+		if((x >= (self.x0 - self.dimx/2)) and (x <= (self.x0 + self.dimx/2))) :
+			if ((y >= (self.y0 - self.dimy/2)) and (y <= (self.y0 + self.dimy/2))):
+				return True 
+		return False
 
 #-------------------------------------Getter-------------------------------------
 

@@ -11,13 +11,13 @@ class Robot:
 		String x float x float x float x float -> Robot
 		- nom du Robot
 		- position de depart: posx et posy
-		- direction: angle du vecteur vitesse (en radian)
+		- direction: angle du vecteur vitesse (en degre)
 		- vitesse de depart (nulle par defaut): speed
 		"""
 		self.robotID = robotID
 		self.posx = posx
 		self.posy = posy
-		self.direction = direction 
+		self.direction = direction*(math.pi/180)
 		self.speed = speed
 		self.optionPrint = True
 		
@@ -46,10 +46,9 @@ class Robot:
 		calcule la nouvelle direction du vecteur vitesse, permet au robot
 		de tourner d'un certain angle (gauche si positif, droit si negatif)
 		"""
-		self.direction = self.direction+angle
+		self.direction = self.direction+(angle*math.pi/180)
 		if(self.optionPrint):
-			angleDegre = angle * (180/math.pi)
-			print("le robot a tourne d un angle de ",angleDegre)
+			print("le robot a tourne d un angle de ",angle)
 		return
 
 
@@ -65,32 +64,7 @@ class Robot:
 
 #------------------------------fonction pour collisions--------------------------
 
-	def possibleCollision(self,obstacle,limitx,limity):
-		"""
-		Obstacle x float x float -> list[float]
-		avec pour parametres, l'obstacle et la distance x et y du champ de vision du robot 
-		(par exemple, les coordonnees de l'arene
-		calcule les coordonnees de collisions avec l'obstacle et retourne les points en x et y
-		lui appartenant dans la trajectoire de l'obstacle, sous forme de liste
-		cette liste est vide s'il n'y a pas eu de collisions
-		"""
-		i = 1
-		listePos = []
-		factx = (obstacle.dimx/10)* math.cos(self.direction)
-		facty = (obstacle.dimx/10)* math.sin(self.direction)
 
-		while((i*factx <= limitx) and (factx*i >= -limitx) and (facty*i <= limity) and (facty*i >= -limity)):
-			x = self.posx + dt * factx
-			y = self.posy + dt * facty
-			
-			if((x >= (obstacle.x0 - obstacle.dimx/2)) and (x <= (obstacle.x0 + obstacle.dimx/2))) :
-				if ((y >= (obstacle.y0 - obstacle.dimy/2)) and (y <= (obstacle.y0 + obstacle.dimy/2))):
-					listePos = [x,y]
-					break
-			i +=1
-
-		
-		return listePos
 
 	def findIntersection(coor1,coor2,coor3,coor4):
 		"""
@@ -100,6 +74,12 @@ class Robot:
 		L2 est trace utilisant les points de coor3 et coor4
 		coorX[0] est la coordonnee x, coorX[1] la coordonne y 
 		"""
+		
+		#on s'assure que L1 et L2 ne soit pas parallele sinon la liste est vide:
+		zero = (coor1[0]-coor2[0])*(coor3[1]-coor4[1]) - (coor1[1]- coor2[1])*(coor3[0]-coor4[0])
+		if (zero == 0):
+			coor = []
+			return 	coor	
 		
 		#on calcule le point x
 		x = (coor1[0]*coor2[1]-coor1[1]*coor2[0])*(coor3[0]-coor4[0]) - (coor1[0]-coor2[0])*(coor3[0]*coor4[1]-coor3[1]*coor4[0])
@@ -114,8 +94,32 @@ class Robot:
 		return coor
 
 
-	def stayInObstacle(obstacle, listPos):
-		return
+
+	def possibleCollision(self,obstacle,limitx,limity):
+		"""
+		Obstacle x float x float -> list[float]
+		avec pour parametres, l'obstacle et la distance x et y du champ de vision du robot 
+		(par exemple, les coordonnees de l'arene
+		calcule les coordonnees de collisions avec l'obstacle et retourne les points en x et y
+		lui appartenant dans la trajectoire de l'obstacle, sous forme de liste
+		cette liste est vide s'il n'y a pas eu de collisions
+		"""
+		i = 1
+		listePos = []
+		factx = (obstacle.dimx/50)* math.cos(self.direction)
+		facty = (obstacle.dimx/50)* math.sin(self.direction)
+
+		while((i*factx <= limitx) and (factx*i >= -limitx) and (facty*i <= limity) and (facty*i >= -limity)):
+			x = self.posx + i*factx
+			y = self.posy + i*facty
+			tof = obstacle.pointInObstacle(x,y)
+			if(tof == True):
+				listePos = [x,y]
+				break
+			i +=1
+		
+		return listePos
+
 
 	def calcDistance2Points(listPos1,listPos2):
 		return
@@ -125,17 +129,16 @@ class Robot:
 	def pointsCollision(self,obstacle,listPos):
 		"""
 		list[float]-> list[float]
-		obtenir les coordonnees du point de collision à partir de points appartenant a l'obstacle
-		et se trouvant sur la trajectoire du robot
+		obtenir les coordonnees du point de collision à partir de points trouves avec la fonction
+		possibleCollision
 		"""
 
 		#on recupere les 4 points delimitants l'obstacle
-		obsPosX1Y1 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
-		obsPosX1Y2 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
-		obsPosX2Y1 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
-		obsPosX1Y2 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
+		obsPosx1y1 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
+		obsPosx1y2 = [(obstacle.x0-obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
+		obsPosx2y1 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0-obstacle.dimy/2)]
+		obsPosx1y2 = [(obstacle.x0+obstacle.dimx/2), (obstacle.y0+obstacle.dimy/2)]
 
-		if(listPos[0] != posx):
 			
 		
 		return
