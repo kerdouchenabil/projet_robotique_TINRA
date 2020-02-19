@@ -31,6 +31,17 @@ class Obstacle:
 			if ((y >= ymin) and (y <=ymax)):
 				return True 
 		return False
+	def printObstacle(self):
+
+        """Affichage d'un Obstacle au format :
+
+        Obstacle[x= , y=  , larg= , long=  ]
+
+        """
+
+        print("Obstacle(x=",self.x,",y=",self.y, "larg=",self.dimy,",long=",self.dimx,")")
+
+
 
 #-------------------------------------Getter-------------------------------------
 
