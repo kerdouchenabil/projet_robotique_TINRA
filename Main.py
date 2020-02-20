@@ -74,5 +74,12 @@ for i in range(0,20000):
     pcb=rob.possibleCollision(mur_bas,20,20)
     pcg=rob.possibleCollision(mur_gauche,20,20)
     pch=rob.possibleCollision(mur_haut,20,20)
-    rob.uptade(pcg,pcd,pch,pcb)
+    rob.update(pcg,pcd,pch,pcb)
     rob.printRobot()
+    
+    
+    
+'''
+    
+'''   
+

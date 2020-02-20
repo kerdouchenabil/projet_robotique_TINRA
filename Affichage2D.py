@@ -87,7 +87,15 @@ class Affichage2D:
         self.drawRobot()
 
         glutSwapBuffers()
-        self.robot.updateTest()
+        
+        #update du Robot
+        #self.robot.updateTest()
+        
+        pcd=self.robot.possibleCollision(mur2,20,20)
+        pcb=self.robot.possibleCollision(mur1,20,20)
+        pcg=self.robot.possibleCollision(mur0,20,20)
+        pch=self.robot.possibleCollision(mur3,20,20)
+        self.robot.update(pcg,pcd,pch,pcb)
         
         
         
@@ -95,7 +103,7 @@ class Affichage2D:
 #---------------------------------------testing------------------------        
 arene1= Arene(400, 400)
 
-rob= Robot(0,200,200,0,10)
+rob= Robot(0,200,200,-50,10)
 arene1.addRobot(rob)
 
 mur0= Obstacle(0,0,20,400) #g

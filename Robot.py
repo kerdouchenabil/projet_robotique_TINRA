@@ -63,7 +63,7 @@ class Robot:
 		return
 
 
-	def uptade(self,possibecolG,possibecolD,possibecolH,possibecolB):
+	def update(self,possibecolG,possibecolD,possibecolH,possibecolB):
 		"""
 		met à jour les coords du robot 
         	 """
@@ -85,9 +85,6 @@ class Robot:
 		         
 		else:
 			self.turn(180)
-            
-		
-		
             
 		
               
