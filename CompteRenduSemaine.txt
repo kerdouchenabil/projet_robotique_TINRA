@@ -1,1 +1,16 @@
-a faire ce soir (ilan)
+
+Compte rendu de la semaine 
+
+SEMAINE 2
+
+Lors de la premiere semaine de travail, notre principal lacune a été au niveau de l'organisation mais surtot de la communication. En effet, nous travaillions mais chacun dans notre coin sans réelle concertation: tout l'inverse d'une methodologie Agile Scrum (exemple: Deux classes Robot.py differentes ont été crées).
+Mais nous avons tout de meme remplis le contrat passé avec les clients/professeurs.
+
+Notre deuxieme entretien et notre deuxieme semaine ont donc permis de mettre en avant ces problemes que nous avons tenté de coorriger et sommes plutot content du resultat. La comunication est beaucoup plus frequente, chaque personne travaillant indique en temps réel sur quoi elle travaille et ses eventuelles difficultés.
+Nous avons notamment beaucoup mieux organisé notre Trello et uniformisé notre code qui est désormais assez bien commenté et les commentaires ont aussi été uniformisés comme cela nous a été suggeré lors de l'entretien.
+
+Cette semaine en plus d'avoir retravaillé notre classe Robot avec ses nouvelles fonctionnalités, nous avons incorporé au code une classe Obstacle permettant de gérer les obstacles. La classe Arene.py a été également retravailléé.
+Mais notre plus gros travail a été orienté vers l'affichage graphique. En effet nous voullions de base partir sur tkinter mais nous nous sommes ravisé en comparant les differents moteurs graphiques, nous avons identifié le besoin d'avoir un moteur graphique flexible qui pourrait à terme nous conduire sur de la 3D, c'est pourquoi nous nous sommes tourné vers OpenGL. 
+
+Cependant nous ne maitrisons pas encore totalement OpenGL c'est pourquoi nous devrons améliorer nos fonctions d'affichage lors de la prochaine semaine.  
+
