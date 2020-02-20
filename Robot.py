@@ -334,7 +334,20 @@ class Robot:
 		self._optionAffichageR = affiche
 
 
-#-----------------------------------print-----------------------------------
+
+
+#-----------------------------------updateTest-----------------------------------
+
+	def updateTest(self):
+		'''
+			juste pour tester l'affichage opengl
+			a supprimer plus tard
+		'''
+		self.move(0.1)
+		self.turn(1)
+
+
+#------------------print---------------------------------------------------------
 
 	
 	def printRobot(self):
