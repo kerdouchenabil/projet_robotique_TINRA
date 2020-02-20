@@ -34,3 +34,21 @@ class Affichage2D:
         glutMainLoop()
         
         
+    def drawRect(self, x, y, width, height):
+        glBegin(GL_QUADS)                       #signaler a opengl que on va dessiner un rectangle (GL_QUADS)
+        glVertex2f(x, y)                        #dessine les 4 vectrices
+        glVertex2f(x + width, y)
+        glVertex2f(x + width, y + height)
+        glVertex2f(x, y + height)
+        glEnd()                                 #signale la fin du dessin
+
+    
+    def refresh2d(self):
+        glViewport(0, 0, self.width, self.height)
+        glMatrixMode(GL_PROJECTION)
+        glLoadIdentity()
+        glOrtho(0.0, self.width, 0.0, self.height, 0.0, 1.0)
+        glMatrixMode (GL_MODELVIEW)
+        glLoadIdentity()
+        
+        
