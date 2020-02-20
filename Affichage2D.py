@@ -52,3 +52,41 @@ class Affichage2D:
         glLoadIdentity()
         
         
+    def drawArene(self):
+        #dessin mur0
+        self.drawRect(self.mur0.x0, self.mur0.y0, self.mur0.dimx, self.mur0.dimy)    
+        #print("drawArene", self.mur0.x0, self.mur0.y0, self.mur0.dimx, self.mur0.dimy) 
+        
+        #dessin mur1
+        self.drawRect(self.mur1.x0, self.mur1.y0, self.mur1.dimx, self.mur1.dimy) 
+        
+        #dessin mur2
+        self.drawRect(self.mur2.x0, self.mur2.y0, self.mur2.dimx, self.mur2.dimy) 
+        
+        #dessin mur3
+        self.drawRect(self.mur3.x0, self.mur3.y0, self.mur3.dimx, self.mur3.dimy) 
+        
+
+    def drawRobot(self):
+        #on suppose que longueur, largeur du robot = 20 x 20
+        self.drawRect(self.robot.posx, self.robot.posy, 20, 20)  
+        print("drawRobot", self.robot.posx, self.robot.posy, 20, 20)  
+        
+        
+    def draw(self):
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+        glLoadIdentity()
+        self.refresh2d()
+        
+        #dessin de l'Arene avec les obstacles
+        glColor3f(1.0, 0.0, 0.0)
+        self.drawArene()
+        
+        #dessin du robot
+        glColor3f(1.0, 1.0, 1.0)
+        self.drawRobot()
+
+        glutSwapBuffers()
+        self.robot.updateTest()
+        
+        
