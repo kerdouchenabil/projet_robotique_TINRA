@@ -1,5 +1,5 @@
-from robot import Robot
-from obstacle import Obstacle
+from .robot import Robot
+from .obstacle import Obstacle
 
 class Arene:
 
