@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from Robot import Robot
-from Arene import Arene
-from Obstacle import Obstacle
+from objet.robot import *
+from objet.arene import *
+from objet.obstacle import *
 
 
 '''

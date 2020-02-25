@@ -3,9 +3,9 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
-from Arene import Arene
-from Robot import Robot
-from Obstacle import Obstacle
+from objet.arene import *
+from objet.robot import *
+from objet.obstacle import *
 
 class Affichage2D:
     

@@ -1,6 +1,6 @@
-from Robot import Robot
-from Obstacle import Obstacle
-from Arene import Arene
+from objet.robot import *
+from objet.obstacle import *
+from objet.arene import *
 import math
 
 rob = Robot("Rob",0,0,0,1)
