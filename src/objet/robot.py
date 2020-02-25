@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import math 
-from obstacle import Obstacle
+from .obstacle import Obstacle
 
 
 
