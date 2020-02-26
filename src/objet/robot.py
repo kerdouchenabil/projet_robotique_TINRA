@@ -212,7 +212,7 @@ class Robot:
 		retourne la distance de l'obstacle le plus proche qui se trouve au travers de sa trajectoire
 		s'il n'y a pas d'obstacle, la valeur sera negative
 		'''
-		listobst = arene.getListObstacle()
+		listobst = arene.listeObst
 		dist = -1
 		coor = []
 		for obstacle in listobst:
@@ -239,42 +239,6 @@ class Robot:
 		
 		return	dist
 
-
-
-#-------------------------------------Getter-------------------------------------
-
-
-	def getPosX(self):
-		"""
-		retourne la position x
-		"""
-		return self.posx
-
-
-	def getPosY(self):
-		"""
-		retourne the position y
-		"""
-		return self.posy
-	
-	
-	def getDirection(self):
-		"""
-		retourne la direction du vecteur vitesse en radian
-		"""
-		return self.direction
-
-	def getVitesse(self):
-		"""
-		retourne le module du vecteur vitesse
-		"""
-		return self.speed
-
-	def getRobotID(self):
-		"""
-		recupere le nom du robot
-		"""
-		return self.robotID
 
 
 #-------------------------------------Setter-------------------------------------
