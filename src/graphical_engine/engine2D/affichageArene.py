@@ -18,7 +18,7 @@ class Affichage2D:
 		# initialisation
 		glutInit()
 
-		#parametre pour l'ouverture de la feneter
+		#parametre pour l'ouverture de la fenetre
 		glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH)
 		glutInitWindowSize(self.width, self.height)
 		glutInitWindowPosition(0, 0)
@@ -33,8 +33,8 @@ class Affichage2D:
 
         
 	def drawRect(self, x, y, wdth, hght):
-		glBegin(GL_QUADS)                       #signaler a opengl que on va dessiner un rectangle (GL_QUADS)
-		glVertex2f(x - wdth/2, y - hght/2)                        #dessine les 4 vectrices
+		glBegin(GL_QUADS)           #signaler a opengl que on va dessiner un rectangle (GL_QUADS)
+		glVertex2f(x - wdth/2, y - hght/2)      #dessine les 4 vectrices
 		glVertex2f(x + wdth/2, y - hght/2)
 		glVertex2f(x + wdth/2, y + hght/2)
 		glVertex2f(x - wdth/2, y + hght/2)
@@ -75,6 +75,7 @@ class Affichage2D:
 
 
 	def animation(self):
+		
 		rob = self.arene.listeRobot[0]
 		mur0= self.arene.listeObst[0]
 		mur1= self.arene.listeObst[1]
@@ -86,7 +87,8 @@ class Affichage2D:
 		pch=rob.possibleCollision(mur3,20,20)
 
 		rob.update(pcg,pcd,pch,pcb)	
-		
+			
+		#self.arene.update(0.1,20)
 		glutPostRedisplay()	
 
 

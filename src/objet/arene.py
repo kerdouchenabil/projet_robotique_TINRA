@@ -44,8 +44,18 @@ class Arene:
 			print("Robot ajouté a la listeRobot")
 		else:
 			print("ajout pas possible dans Robot")
-			
+
+
+#--------------------------------fonctions update--------------------------------			
 					
+	def update(self,dt,minDist):
+		for rob in self.listeRobot:
+			distance = rob.distanceRobotObs(self)
+			if(distance < minDist and distance != -1):
+				rob.turn(90)
+			rob.move(dt)
+
+
 
 #-------------------------------------Setter-------------------------------------
 

@@ -13,7 +13,7 @@ from objet.obstacle import *
 '''
 
 '''
-    initialisatin des attributs de depart
+    initialisation des attributs de depart
 '''
 robID= 0
 robPosX= 370
@@ -34,6 +34,7 @@ rob = Robot(robID, robPosX, robPosY, robDir, robVitesse)
 '''
     creation des murs
 '''
+
 longeurMur=areneLongeur
 largeurMur=10
 mur_haut=Obstacle(longeurMur/2,0+largeurMur/2,longeurMur,largeurMur)
@@ -49,6 +50,7 @@ mur_droite=Obstacle(longeurMur-largeurMur/2,longeurMur/2,largeurMur,longeurMur)
 '''
 arene = Arene(areneLongeur, areneLargeur)
 
+
 '''
 ajout du robot et des murs dans l'arene 
 '''
@@ -57,25 +59,19 @@ arene.addObstacle(mur_bas)
 arene.addObstacle(mur_gauche)
 arene.addObstacle(mur_droite)
 arene.addRobot(rob)
-pcd=rob.possibleCollision(mur_droite,20,20)
-pcb=rob.possibleCollision(mur_bas,20,20)
-pcg=rob.possibleCollision(mur_gauche,20,20)
-pch=rob.possibleCollision(mur_haut,20,20)
-arene.printAll()
-print("")
-print("possible collision ")
-print("mur de droite ",pcd)
-print("mur du bas",pcb)
-print("mur de gauche ",pcg)
-print("mur du haut ",pch)
 
-for i in range(0,20000):
-    pcd=rob.possibleCollision(mur_droite,20,20)
-    pcb=rob.possibleCollision(mur_bas,20,20)
-    pcg=rob.possibleCollision(mur_gauche,20,20)
-    pch=rob.possibleCollision(mur_haut,20,20)
-    rob.update(pcg,pcd,pch,pcb)
-    rob.printRobot()
+
+
+for i in range(0,1000):
+	"""
+	pcd=rob.possibleCollision(mur_droite,20,20)
+	pcb=rob.possibleCollision(mur_bas,20,20)
+	pcg=rob.possibleCollision(mur_gauche,20,20)
+	pch=rob.possibleCollision(mur_haut,20,20)
+	rob.update(pcg,pcd,pch,pcb)
+	rob.printRobot()
+	"""
+	arene.update(1,2)
     
     
     
