@@ -12,7 +12,7 @@ class Affichage2D:
     def __init__(self, arene):
         
         self.arene = arene
-        self.robot = arene.getRobot0()
+        self.robot = arene.listeRobot[0]
         
         self.mur0 = self.arene.listeObst[0] # premier obstacle de la listeObst
         self.mur1 = self.arene.listeObst[1] # 2eme obstacle

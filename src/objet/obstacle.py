@@ -51,20 +51,6 @@ class Obstacle:
 
 
 
-#-------------------------------------Getter-------------------------------------
-
-	def getObstaclePosX(self):
-		return self.x0
-	
-	def getObstaclePosY(self):
-		return self.y0
-
-	def getDimX(self):
-		return self.dimx
-
-	def getDimY(self):
-		return self.dimy
-
 
 
 #-------------------------------------Setter-------------------------------------
