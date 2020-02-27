@@ -2,6 +2,7 @@
 
 from objet.robot import *
 
+
 class Controleur:
 	'''
 		le controleur (IA) du robot
