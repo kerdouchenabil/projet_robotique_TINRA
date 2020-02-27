@@ -75,7 +75,7 @@ class Affichage2D:
 
 
 	def animation(self):
-		
+		"""
 		rob = self.arene.listeRobot[0]
 		mur0= self.arene.listeObst[0]
 		mur1= self.arene.listeObst[1]
@@ -87,8 +87,8 @@ class Affichage2D:
 		pch=rob.possibleCollision(mur3,20,20)
 
 		rob.update(pcg,pcd,pch,pcb)	
-		
-		#self.arene.update(0.1,20)
+		"""
+		self.arene.update(0.1,20)
 		glutPostRedisplay()	
 
 
