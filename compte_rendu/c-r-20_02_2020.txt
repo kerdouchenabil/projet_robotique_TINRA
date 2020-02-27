@@ -11,6 +11,11 @@ Nous avons notamment beaucoup mieux organisé notre Trello et uniformisé notre 
 
 Cette semaine en plus d'avoir retravaillé notre classe Robot avec ses nouvelles fonctionnalités, nous avons incorporé au code une classe Obstacle permettant de gérer les obstacles. La classe Arene.py a été également retravailléé.
 Mais notre plus gros travail a été orienté vers l'affichage graphique. En effet nous voullions de base partir sur tkinter mais nous nous sommes ravisé en comparant les differents moteurs graphiques, nous avons identifié le besoin d'avoir un moteur graphique flexible qui pourrait à terme nous conduire sur de la 3D, c'est pourquoi nous nous sommes tourné vers OpenGL. 
+ 
 
-Cependant nous ne maitrisons pas encore totalement OpenGL c'est pourquoi nous devrons améliorer nos fonctions d'affichage lors de la prochaine semaine.  
+SEMAINE 3
+
+Lors de cette troisième semaine, nous nous sommes efforcé de retravailler l'arborescence du projet de sorte à ce qu'elle soit claire.
+Nous avons réglé certains bugs detectés comme les modifications d'angles qui donnaient des resultats faux. Nous avons séparé ke main de l'Affichage2D de sorte à ce qu'il soient independants. Les update ont été retravaillés.
+Au niveau de la communication nous avons amélioré notre discord et créé differnets channels en fonction des parties sur lesquelles nous trvaillons pour que si d'eentuelles questions, discussions ou débat puissent etre organisé par sections.
 
