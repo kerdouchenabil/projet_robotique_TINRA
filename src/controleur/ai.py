@@ -26,7 +26,7 @@ class Controleur:
 		return
 	
 	
-	def move_strategy(self.robot):
+	def control_moteur(self.robot):
 		"""
 			strategie d'avancement du robot (vitesse, accelereation) ?
 		"""
@@ -34,13 +34,19 @@ class Controleur:
 		#a completer
 		return 
 
+#------------- les objectif du robot ------------
 
-	def turn_strategy(self.robot):
+	def setParcours(""" liste des coord"""):
 		"""
 			strategie de rotation du robot (degré de rotation) ?
 		"""
 		
 		#a completer
 		return 
+
+        def setTeteBaisse():
+
+        def setSuivreBalise():
+            #plus tard, bien plus tard
 	
 	
