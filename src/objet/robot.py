@@ -77,14 +77,14 @@ class Robot:
 						self.move(0.1)
 		         
 					else:
-						self.turn(180)        
+						self.turn(90)        
 				else:
-					self.turn(180)
+					self.turn(90)
 			else:
-				self.turn(180)
+				self.turn(90)
 		         
 		else:
-			self.turn(180)
+			self.turn(90)
             
 
 		
@@ -155,6 +155,7 @@ class Robot:
 		'''
 		calcule la distance d un point avec le robot
 		'''
+		
 		return math.sqrt((listpos[0] - self.posx)**2 + (listpos[1] - self.posy)**2)
 
 

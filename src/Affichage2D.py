@@ -103,7 +103,7 @@ class Affichage2D:
 #---------------------------------------testing------------------------        
 arene1= Arene(400, 400)
 
-rob= Robot(0,200,200,0,10)
+rob= Robot(0,200,20,0,5)
 arene1.addRobot(rob)
 
 mur0= Obstacle(0,0,20,400) #g

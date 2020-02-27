@@ -11,7 +11,7 @@ from objet.obstacle import *
      
 arene1= Arene(400, 400)
 
-rob= Robot(0,200,200,0,10)
+rob= Robot(0,200,200,0,1)
 arene1.addRobot(rob)
 
 mur0= Obstacle(10,200,20,400) #g
