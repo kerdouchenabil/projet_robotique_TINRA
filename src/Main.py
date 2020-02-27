@@ -63,15 +63,15 @@ arene.addRobot(rob)
 
 
 for i in range(0,1000):
-	"""
+	
 	pcd=rob.possibleCollision(mur_droite,20,20)
 	pcb=rob.possibleCollision(mur_bas,20,20)
 	pcg=rob.possibleCollision(mur_gauche,20,20)
 	pch=rob.possibleCollision(mur_haut,20,20)
 	rob.update(pcg,pcd,pch,pcb)
 	rob.printRobot()
-	"""
-	arene.update(1,2)
+	
+	rob.update(pcg,pcd,pch,pcb)
     
     
     
