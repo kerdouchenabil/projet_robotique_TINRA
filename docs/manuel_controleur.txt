@@ -4,4 +4,16 @@
 # pour la classe ai.py: #
 #---------------------- #
 
-#----------------------------------recupCoord------------------------------------
+#----------------------------------setParcours------------------------------------
+
+    renvoit la liste d'instruction pour que le robot realise
+        def setParcours(*coords)
+        
+        
+        tab[2] x tab[2] x .....
+            -tableau de 2 contenant, [x; y]
+            nombre d'argument non specifier (de 0 a infinit argument possible)
+            /!\ pas de verification sur la taille des tableau en argument/!\
+        
+        ex :
+            setParcours([10,10], [200,200], [200, 400])
