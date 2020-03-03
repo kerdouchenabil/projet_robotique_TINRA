@@ -88,7 +88,8 @@ class Affichage2D:
 
 		rob.update(pcg,pcd,pch,pcb)	
 		"""
-		self.arene.update(0.1,20)
+		self.arene.update(0.5,20)
+		self.arene.listeRobot[0].printRobot()
 		glutPostRedisplay()	
 
 

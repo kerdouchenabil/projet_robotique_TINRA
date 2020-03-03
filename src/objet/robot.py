@@ -182,7 +182,7 @@ class Robot:
 
 		for i in 0,3:
 			coor2 = self.findIntersection(listPos,list4point1[i],list4point2[i])
-			if(coor2 != []):
+			if(len(coor2)== 2):
 				dist2 = self.distancePointRobot(coor2)
 				if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
 					dist = dist2
@@ -234,10 +234,11 @@ class Robot:
 			listpos = self.possibleCollision(obstacle,arene.longueur, arene.largeur) 
 			if (len(listpos) == 2):  # si obstacle est dans la trajectoire de robot
 				listpos = self.pointsCollision(obstacle,listpos) # calcule le point de collision entre robot et obstacle
-				dist_int = self.distancePointRobot(listpos)  # calcule la distance entre robot et point de collision
-				if (dist_int < dist or dist == -1):
-					dist = dist_int
-					coor = listpos
+				if(len(listpos) == 2):
+					dist_int = self.distancePointRobot(listpos)  # calcule la distance entre robot et point de collision
+					if (dist_int < dist or dist == -1):
+						dist = dist_int
+						coor = listpos
 		
 		if(self._optionAffichageR):
 			if(dist == -1):
