@@ -32,9 +32,10 @@ arene1.addObstacle(mur3)
 # True ou False pour activer/desactiver; respectivement:
 # 1 -> arene
 # 2 -> robots
-# 3 -> obstacles
+# 3 -> actions du robot
+# 4 -> obstacles
 #-------------------------------------------------------------
-arene1.setOptionPrint(True,True,True)
+arene1.setOptionPrint(True,False,True,True)
 arene1.printAll()
 
 

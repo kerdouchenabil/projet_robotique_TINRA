@@ -5,10 +5,11 @@
 
 		
 
-	activer/desactiver l'affichage des informations du robot, de l'obstacle et l'arene
+	activer/desactiver l'affichage des informations du robot et ses actions, de l'obstacle et l'arene
 	sur le terminal:
 
 		setOptionPrintRobot(affiche)
+		setOptionPrintEvent(affiche)
 		setOptionPrintObstacle(affiche)
 		setOptionPrintArene(affiche)
 		
@@ -18,7 +19,9 @@
 
 		ex: 
 		rob.setOptionPrintRobot(False)
-			la fonction printRobot n'affichera rien meme si on l'appelle 
+			la fonction printRobot n'affichera rien meme si on l'appelle
+ 		rob.setOptionPrintEvent(False)
+			rien ne s'affichera sur les actions réalisées par le robot
 		arene.setOptionPrintArene(True)
 			on affichera les informations de l'arene lorqu'on fera appel à sa fonction print
 		obstacle.setOptionPrintObstacle(False)
@@ -27,16 +30,17 @@
 
 	activer/desactiver l'affichage pour une arene et tous ses robots et obstacles:
 
-		setOptionPrint(afficheA,afficheR,afficheO)
+		setOptionPrint(afficheA,afficheR,afficheE,afficheO)
 		
 		combinaison des trois fonctions precedentes:
 			- afficheA -> arene
 			- afficheR -> tous les robots de cette arene
+			- afficheE -> actions réalisées par le robot 
 			- afficheO -> tous les obstacles de cette arene
 
 		ex:
-		arene.setOptionPrint(False,True,False)
-			affiche uniquement les informations sur le robot
+		arene.setOptionPrint(False,True,True,False)
+			affiche uniquement les informations sur le robot et ses actions
 			rien ne s'affichera sur les obstacles et l'arene 
 
 

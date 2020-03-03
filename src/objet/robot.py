@@ -20,7 +20,7 @@ class Robot:
 		self.direction = direction*(math.pi/180)
 		self.speed = speed
 		self._optionAffichageR = True
-		
+		self._optionAffichageEvent = True
 
 
 #---------------------------------Mouvements---------------------------------
@@ -33,7 +33,7 @@ class Robot:
 		"""
 		self.speed = self.speed + acc*dt
 		
-		if(self._optionAffichageR):
+		if(self._optionAffichageEvent):
 			if (acc>0):
 				print("le robot a accelere de ",acc)
 			else:
@@ -48,7 +48,7 @@ class Robot:
 		"""
 		self.direction = self.direction+(angle*math.pi/180)
 		self.direction = self.direction % (2*math.pi)
-		if(self._optionAffichageR):
+		if(self._optionAffichageEvent):
 			print("le robot a tourne d un angle de ",angle)
 		return
 
@@ -212,7 +212,7 @@ class Robot:
 						dist = dist_int
 						coor = listpos
 		
-		if(self._optionAffichageR):
+		if(self._optionAffichageEvent):
 			if(dist == -1):
 				print ("")
 				print (" le robot ",self.robotID, "n'a aucun obstacles dans sa trajectoire")
@@ -283,6 +283,14 @@ class Robot:
 		self._optionAffichageR = affiche
 
 
+	def setOptionPrintEvent(self,affiche):
+		"""
+		choisit ou non d'afficher les informations des evenements du robot sur 
+		le terminal a chaque pas de temps
+			False -> n'affiche pas
+			True  -> affiche
+		"""
+		self._optionAffichageEvent = affiche
 
 
 #-----------------------------------updateTest-----------------------------------

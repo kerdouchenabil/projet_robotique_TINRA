@@ -87,16 +87,17 @@ class Arene:
 		self._optionAffichageA = affiche
 
 
-	def setOptionPrint(self, afficheA,afficheR,afficheO):
+	def setOptionPrint(self, afficheA,afficheR,afficheE,afficheO):
 		"""
 		choisit ou non d'afficher les informations sur l'arene, ses robots et ses
-		obstacles; les 3 attributs sont pour controler respectivement: 
-			(affichage Arene, affichage Robot, affichage Obstacle)
+		obstacles; les 4 attributs sont pour controler respectivement: 
+			(affichage Arene, affichage Robot, affichage event, affichage Obstacle)
 			False -> n'affiche pas
 			True  -> affiche
 		"""	
 		for robot in self.listeRobot:
 			robot.setOptionPrintRobot(afficheR)
+			robot.setOptionPrintEvent(afficheE)
 		for obstacle in self.listeObst:
 			obstacle.setOptionPrintObstacle(afficheO)
 		self.setOptionPrintArene(afficheA)
