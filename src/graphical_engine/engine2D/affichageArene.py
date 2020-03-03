@@ -9,11 +9,14 @@ from objet.obstacle import *
 
 class Affichage2D:
 
-	def __init__(self, arene):
+	def __init__(self, arene,dt,dist,tourne):
 		self.arene = arene
 		self.window = 0
 		self.width = arene.largeur
 		self.height = arene.longueur
+		self.dt = dt
+		self.dist = dist
+		self.tourne = tourne
 
 		# initialisation
 		glutInit()
@@ -75,20 +78,7 @@ class Affichage2D:
 
 
 	def animation(self):
-		"""
-		rob = self.arene.listeRobot[0]
-		mur0= self.arene.listeObst[0]
-		mur1= self.arene.listeObst[1]
-		mur2= self.arene.listeObst[2]
-		mur3= self.arene.listeObst[3]
-		pcd=rob.possibleCollision(mur2,20,20)
-		pcb=rob.possibleCollision(mur1,20,20)
-		pcg=rob.possibleCollision(mur0,20,20)
-		pch=rob.possibleCollision(mur3,20,20)
-
-		rob.update(pcg,pcd,pch,pcb)	
-		"""
-		self.arene.update(0.5,20)
+		self.arene.updateTurn(self.dt,self.dist,self.tourne)
 		self.arene.listeRobot[0].printRobot()
 		glutPostRedisplay()	
 

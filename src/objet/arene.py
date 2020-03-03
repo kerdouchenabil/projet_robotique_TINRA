@@ -56,6 +56,13 @@ class Arene:
 			rob.move(dt)
 
 
+	def updateTurn(self,dt,minDist,angleTurn):
+		for rob in self.listeRobot:
+			distance = rob.distanceRobotObs(self)
+			if(distance < minDist and distance != -1):
+				rob.turn(angleTurn)
+			rob.move(dt)
+
 
 #-------------------------------------Setter-------------------------------------
 
@@ -88,10 +95,10 @@ class Arene:
 			False -> n'affiche pas
 			True  -> affiche
 		"""	
-		for robot in listeRobot:
+		for robot in self.listeRobot:
 			robot.setOptionPrintRobot(afficheR)
-		for obstacle in listeObst:
-			obst.setOptionPrintObstacle(afficheO)
+		for obstacle in self.listeObst:
+			obstacle.setOptionPrintObstacle(afficheO)
 		self.setOptionPrintArene(afficheA)
 			
 

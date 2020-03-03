@@ -187,35 +187,7 @@ class Robot:
 				if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
 					dist = dist2
 					coor = coor2
-		"""
-		coor2 = self.findIntersection(listPos,obsPosx1y1,obsPosx1y2)
-		dist2 = self.distancePointRobot(coor2)
-		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
-			dist = dist2
-			coor = coor2
-		
-
-		coor2 = self.findIntersection(listPos,obsPosx1y2,obsPosx2y2)
-		dist2 = self.distancePointRobot(coor2)
-		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
-			dist = dist2
-			coor = coor2
-		
-
-		coor2 = self.findIntersection(listPos,obsPosx2y2,obsPosx2y1)
-		dist2 = self.distancePointRobot(coor2)
-		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
-			dist = dist2
-			coor = coor2
-		
-
-
-		coor2 = self.findIntersection(listPos,obsPosx2y1,obsPosx1y1)
-		dist2 = self.distancePointRobot(coor2)
-		if(obstacle.pointInObstacle(coor2[0],coor2[1]) and (dist2 < dist or dist == -1)):
-			dist = dist2
-			coor = coor2
-		"""
+	
 
 		return coor
 

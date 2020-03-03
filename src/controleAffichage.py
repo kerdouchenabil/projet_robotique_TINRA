@@ -8,7 +8,9 @@ from objet.arene import *
 from objet.robot import *
 from objet.obstacle import *
 
-     
+#-------------------------------------------------------------
+# construit l'arene  
+#-------------------------------------------------------------
 arene1= Arene(400, 400)
 
 rob= Robot(0,200,200,10,1)
@@ -24,12 +26,30 @@ arene1.addObstacle(mur1)
 arene1.addObstacle(mur2)
 arene1.addObstacle(mur3)
 
+
+#-------------------------------------------------------------
+# option pour l'affichage des informations sur l'arene 
+# True ou False pour activer/desactiver; respectivement:
+# 1 -> arene
+# 2 -> robots
+# 3 -> obstacles
+#-------------------------------------------------------------
+arene1.setOptionPrint(True,True,True)
 arene1.printAll()
 
 
+#-------------------------------------------------------------
+# parametre pour le test  
+#-------------------------------------------------------------
+dt = 0.1		# pas de temps
+distanceLimite = 20	# distance minimale avec le mur avant que le robot change de direction
+angleTourne = 60	# le robot tourne de cet angle 
 
-affich= Affichage2D(arene1)
 
+#-------------------------------------------------------------
+# debut du test  
+#-------------------------------------------------------------
+affichage= Affichage2D(arene1,dt,angleTourne,distanceLimite)
 glutMainLoop()  
     
 
@@ -37,7 +57,7 @@ glutMainLoop()
 	
 
 
-#print("affichage2D: longueur=", affich.width, "largeur=", affich.height)
+
 
        
 
