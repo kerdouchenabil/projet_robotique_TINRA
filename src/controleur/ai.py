@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from objet.robot import *
+from src.objet.robot import *
 
 
 class Controleur:
