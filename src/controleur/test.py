@@ -1,4 +1,4 @@
-from math import *
+import math as m
 
 #precision des valeurs finals
 precision = 3
@@ -9,11 +9,11 @@ def afficher(*parametres):
     longueur = createLong(param)
     angle = createAngle(param)
     instruction = list(zip(longueur, angle))
+    print()
     print(longueur)
     print(angle)
-    print()
     print(instruction)
-
+    print()
     for i in range(len(param)-1):
         print("segment n°",i+1)
         print("x1 =", param[i][0], "; y1 =", param[i][1])
@@ -28,7 +28,8 @@ def createLong(parametres):
     for i in range(len(param)-1):
         x = abs(param[i][0] - param[i+1][0])
         y = abs(param[i][1] - param[i+1][1])
-        hypotenuse = round(sqrt(x**2 + y**2), precision)
+        hypotenuse = m.sqrt(x**2 + y**2)
+        hypotenuse = round(hypotenuse, precision)
         longueur.append(hypotenuse)
     return longueur
 
@@ -36,9 +37,17 @@ def createAngle(parametres):
 
     param = list(parametres)
     angle = list()
+    alpha_precedent = 0
     for i in range(len(param)-1):
-        angle.append(0)
+        print(alpha_precedent)
+        x = param[i+1][0] - param[i][0]
+        y = param[i+1][1] - param[i][1]
+        alpha = m.atan2(y, x) - alpha_precedent
+        alpha_precedent = alpha
+        alpha = m.degrees(alpha)
+        alpha = round(alpha, precision)
+        angle.append(alpha)
     return angle
 
 
-afficher([10,10], [250,200], [200, 400])
+afficher([0,0], [10,0], [10, 10], [0,10], [0,0])
