@@ -81,27 +81,80 @@ def createLong(parametres):
 		longueur.append(hypotenuse)
 	return longueur
 
+
 def createAngle(parametres):
 	"""
 		renvoit la liste des rotations que le robot doit effectuer par raport a l'origine
 	"""
-    param = list(parametres)
-    angle = list()
-    alpha_precedent = 0
-    for i in range(len(param)-1):
-        print(alpha_precedent)
-        x = param[i+1][0] - param[i][0]
-        y = param[i+1][1] - param[i][1]
-        alpha = m.atan2(y, x)
-        alpha = m.degrees(alpha)
-        alpha = round(alpha, precision)
-        angle.append(alpha)
-    return angle
+	param = list(parametres)
+	angle = list()
+	alpha_precedent = 0
+	for i in range(len(param)-1):
+		print(alpha_precedent)
+		x = param[i+1][0] - param[i][0]
+		y = param[i+1][1] - param[i][1]
+		alpha = m.atan2(y, x)
+		alpha = m.degrees(alpha)
+		alpha = round(alpha, precision)
+		angle.append(alpha)
+	return angle
 
-	def control_moteur(self, ):
+
+def control_moteur(self, ):
+	"""
+		strategie d'avancement du robot (vitesse, accelereation) ?
+	"""
+	
+	
+	return 
+
+
+#------------- Sreategies asynchrones du controleur ------------
+
+class go_ahead_strategy:
+	"""
+		strategie permettant de dire au robot d'avancer pour parcourir une certaine distance donnée
+		cette strategie sera utilisée pour quelques étapes de la stratégie 'faire_un_carré'
+		la stratégie doit etre asynchrone, donc doit juste avancer si la distance n'a pas encore été parcourue
+		pas de boucles itératives
+		
+	"""
+
+	def __init__(self, robot, dist):
 		"""
-			strategie d'avancement du robot (vitesse, accelereation) ?
+			constructeur
+			initialise la distance_parcourue à 0
+		"""
+		self.dist_parcourue = 0 #distance parcourue par le robot
+		
+	
+	def start(self):
+		"""
+			debut de strategie
+			
 		"""
 		
 		
-		return 
+		
+	def step(self):
+		"""
+			coeur de stategie (update)
+		"""
+		
+		
+		
+	def stop(self):
+		"""
+			teste si la distance demandée a été parcourue ou pas
+			si oui renvoi vrai donc fin de la strategie go_ahead 
+		"""
+		
+		
+		
+
+
+
+
+
+
+
