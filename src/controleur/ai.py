@@ -69,17 +69,17 @@ class Controleur:
 
 def createLong(parametres):
 	"""
-		renvoit la liste des longeurs des deplacement que le robot doit effectuer
+	renvoit la liste des longeurs des deplacement que le robot doit effectuer
 	"""
-    param = list(parametres)
-    longueur = list()
-    for i in range(len(param)-1):
-        x = abs(param[i][0] - param[i+1][0])
-        y = abs(param[i][1] - param[i+1][1])
-        hypotenuse = m.sqrt(x**2 + y**2)
-        hypotenuse = round(hypotenuse, precision)
-        longueur.append(hypotenuse)
-    return longueur
+	param = list(parametres)
+	longueur = list()
+	for i in range(len(param)-1):
+		x = abs(param[i][0] - param[i+1][0])
+		y = abs(param[i][1] - param[i+1][1])
+		hypotenuse = m.sqrt(x**2 + y**2)
+		hypotenuse = round(hypotenuse, precision)
+		longueur.append(hypotenuse)
+	return longueur
 
 def createAngle(parametres):
 	"""
