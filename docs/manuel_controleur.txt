@@ -7,7 +7,7 @@
 #----------------------------------setParcours------------------------------------
 
     renvoit la liste d'instruction pour que le robot realise
-        def setParcours(*coords)
+        def setParcours(nom, *coords)
         
         
         tab[2] x tab[2] x .....
@@ -17,3 +17,29 @@
         
         ex :
             setParcours([10,10], [200,200], [200, 400])
+
+#----------------------------------createLong------------------------------------
+
+    renvoit la liste des longeurs des deplacement que le robot doit effectuer
+        def createLong(parametres)
+        
+        
+        list(tab[2])
+            -liste de tableau de 2 argument
+            /!\ pas de verification sur la taille des tableau en argument/!\
+        
+        ex :
+            longueur = createLong(param)
+
+#----------------------------------setParcours------------------------------------
+
+    renvoit la liste des rotations que le robot doit effectuer par raport a l'origine
+        def createAngle(parametres)
+        
+        
+        tab[2] x tab[2] x .....
+            -liste de tableau de 2 argument
+            /!\ pas de verification sur la taille des tableau en argument/!\
+        
+        ex :
+            angle = createAngle(param)
