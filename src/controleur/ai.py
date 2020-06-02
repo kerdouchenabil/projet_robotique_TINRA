@@ -2,6 +2,7 @@
 
 from src.objet.robot import *
 from builtins import True
+from math import *
 
 
 class Controleur:
@@ -140,19 +141,30 @@ class go_ahead_strategy:
 		"""
 		xbegin = self.robot.posx
 		ybegin = self.roboy.posy
-		coor= [xbegin,ybegin]
+		self.coords_start= [xbegin,ybegin] #initialiser dans _init_ ?
 		self.robot.direction = 0
 		self.robot.speed = 0
-		return coor    
+		
+		return [xbegin,ybegin]   #retourne les coords de depart
         
         		
 		
 	def step(self):
 		"""
 			coeur de stategie (update)
+			Pour le moment, on a pas de roues donc on calcule la distance avec les coords (virtuel)
+			
+			pour le robot reel, la distance est egale a:
+			diametre_roue * pi * nombre_tours_moteur
+			
+			pour le virtuel:
+			distance entre deux points géométriques
 		"""
-		self.robot.accelerate(1, 1) #acceleration+1 et dt=1 a chaque etape
+		#dt=?  doit-on le fixer a 1 par exemple?
 		
+		self.robot.accelerate(1, 1) #acceleration+1 et dt=1 a chaque etape
+		self.robot.move(1) #dt=1
+		self.dist_parcourue += calcul_distance(self.robot.posx, self.coords_start[0], self.robot.posy, self.coords_start[1])
 		
 		
 	def stop(self):
@@ -161,14 +173,31 @@ class go_ahead_strategy:
 			si oui renvoi vrai donc fin de la strategie go_ahead 
 		"""
 		
-		if(self.dist_parcourue >= self.dist)
+		if(self.dist_parcourue >= self.dist) #si fin du parcours
 			self.robot.speed = 0 
 			return True
-		return False
+		
+		'''
+		#Virtuel: il faut passer l'arene en parametre pour detecter un obstacle
+		if(robot.distanceRobotObs(arene) < distance_securite) #si obstacle devant
+			return True
+		'''
+		
+		'''
+		#Reel: on recupere directement le retour du capteur de distance (pas encore fonctionnel)
+		if(robot.getDistance() < distance_securite)
+			return True
+		'''
+		
+		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
 		
 
-
-
+	def calcul_distance(self, x1, x2, y1, y2):
+		"""
+		fonction qui sert juste a calculer une distance geo entre deux points ( utilisée dans step() )
+		"""
+		return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) )
+	
 
 
 
