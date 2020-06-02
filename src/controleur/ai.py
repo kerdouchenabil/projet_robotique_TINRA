@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from src.objet.robot import *
+from builtins import True
 
 
 class Controleur:
@@ -127,6 +128,10 @@ class go_ahead_strategy:
 		"""
 		self.dist_parcourue = 0 #distance parcourue par le robot
 		
+		# mettre robot et dist comme attribut de cette classe pour les utiliser directement dans les fonctions
+		self.robot=robot
+		self.dist=dist
+		
 	
 	def start(self):
 		"""
@@ -146,6 +151,7 @@ class go_ahead_strategy:
 		"""
 			coeur de stategie (update)
 		"""
+		self.robot.accelerate(1, 1) #acceleration+1 et dt=1 a chaque etape
 		
 		
 		
@@ -154,13 +160,17 @@ class go_ahead_strategy:
 			teste si la distance demandée a été parcourue ou pas
 			si oui renvoi vrai donc fin de la strategie go_ahead 
 		"""
-		coord = [self.robot.posx,self.robot.posy]
-		if(coord == self.start()):
+<<<<<<< HEAD
+		
+        
+=======
+		
+		if(self.dist_parcourue >= self.dist)
 			self.robot.speed = 0 
 			return True
-		return False 
-    
-        
+		return False
+		
+>>>>>>> 85969e51ffb7f1c23c02ff2bedb05074855b469c
 
 
 
