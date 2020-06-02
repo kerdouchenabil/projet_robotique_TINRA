@@ -142,7 +142,7 @@ class go_ahead_strategy:
 		ybegin = self.roboy.posy
 		coor= [xbegin,ybegin]
 		self.robot.direction = 0
-		self.robot.speed = 1
+		self.robot.speed = 0
 		return coor    
         
         		
