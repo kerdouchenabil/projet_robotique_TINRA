@@ -160,17 +160,13 @@ class go_ahead_strategy:
 			teste si la distance demandée a été parcourue ou pas
 			si oui renvoi vrai donc fin de la strategie go_ahead 
 		"""
-<<<<<<< HEAD
-		
-        
-=======
 		
 		if(self.dist_parcourue >= self.dist)
 			self.robot.speed = 0 
 			return True
 		return False
 		
->>>>>>> 85969e51ffb7f1c23c02ff2bedb05074855b469c
+
 
 
 
