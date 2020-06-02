@@ -145,6 +145,7 @@ class go_ahead_strategy:
 		"""
 			coeur de stategie (update)
 		"""
+		self.robot.accelerate(1, 1) #acceleration+1 et dt=1 a chaque etape
 		
 		
 		
