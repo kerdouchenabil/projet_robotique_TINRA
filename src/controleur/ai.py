@@ -133,8 +133,14 @@ class go_ahead_strategy:
 			debut de strategie
 			
 		"""
-		
-		
+		xbegin = self.robot.posx
+		ybegin = self.roboy.posy
+		coor= [xbegin,ybegin]
+		self.robot.direction = 1
+		self.robot.speed = 1
+		return coor    
+        
+        		
 		
 	def step(self):
 		"""
@@ -148,9 +154,13 @@ class go_ahead_strategy:
 			teste si la distance demandée a été parcourue ou pas
 			si oui renvoi vrai donc fin de la strategie go_ahead 
 		"""
-		
-		
-		
+		coord = [self.robot.posx,self.robot.posy]
+		if(coord == self.start()):
+			self.robot.speed = 0 
+			return True
+		return False 
+    
+        
 
 
 
