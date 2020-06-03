@@ -253,7 +253,27 @@ class turn_right_strategy:
 		
 		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
 	
+	
+class turn_left_strategy:
+	"""
+		strategie asynchrone qui permet de tourner a gauche
+		start: quand on lui donne l'ordre de tourner
+		step: reelement on fait tourner la roue droite plus rapidement que la gauche
+		stop: quand l'angle donné est fait par rapport à l'etat start
+	"""
+	
+	def __init__(self, robot, angle):
+		"""
+			constructeur, initialise la direction initiale
+		"""
+		self.robot = robot
+		self.angle = angle
+		self.dir_init = robot.getDir()
+		
 
+	
+	
+	
 	def calcul_distance(self, x1, x2, y1, y2):
 		"""
 		fonction qui sert juste a calculer une distance geo entre deux points ( utilisée dans step() )
