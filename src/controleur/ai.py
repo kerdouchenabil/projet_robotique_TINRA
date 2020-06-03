@@ -236,6 +236,22 @@ class turn_right_strategy:
 			renvoi vrai si fin de la strategie
 		"""
 		
+		if(self.robot.getDir() < self.dir_init-self.angle): #si fin de la rotation droite demandée
+			return True
+		
+		'''
+		#Virtuel: il faut passer l'arene en parametre pour detecter un obstacle
+		if(robot.distanceRobotObs(arene) < distance_securite) #si obstacle devant
+			return True
+		'''
+		
+		'''
+		#Reel: on recupere directement le retour du capteur de distance (pas encore fonctionnel)
+		if(robot.getDistance() < distance_securite)
+			return True
+		'''
+		
+		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
 	
 
 	def calcul_distance(self, x1, x2, y1, y2):
