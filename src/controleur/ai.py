@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from src.objet.robot import *
-from builtins import True
 from math import *
 
 
@@ -173,7 +172,7 @@ class go_ahead_strategy:
 			si oui renvoi vrai donc fin de la strategie go_ahead 
 		"""
 		
-		if(self.dist_parcourue >= self.dist) #si fin du parcours
+		if(self.dist_parcourue >= self.dist): #si fin du parcours
 			self.robot.speed = 0 
 			return True
 		
@@ -190,7 +189,41 @@ class go_ahead_strategy:
 		'''
 		
 		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
+	
+	
+class turn_right_strategy:
+	"""
+		strategie asynchrone qui permet de tourner a droite
+		start: quand on lui donne l'ordre de tourner
+		step: reelement on fait tourner la roue gauche plus rapidement que la droite
+		stop: quand l'angle donné est fait par rapport à l'etat start
+	"""
+	
+	def __init__(self, robot, angle):
+		"""
+			constructeur, initialise la direction initiale
+		"""
 		
+
+	def start(self):
+		"""
+			debut de strategie
+			
+		"""
+		
+		
+	def step(self):
+		"""
+			coeur de strategie, update()
+		"""
+		
+		
+	def stop(self):
+		"""
+			renvoi vrai si fin de la strategie
+		"""
+		
+	
 
 	def calcul_distance(self, x1, x2, y1, y2):
 		"""
