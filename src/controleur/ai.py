@@ -220,7 +220,15 @@ class turn_right_strategy:
 	def step(self):
 		"""
 			coeur de strategie, update()
+			donner l'ordre de continuer a tourner a droite
+			#c'est mieux si la gestion du virtuel et réel est gérée par un proxy
 		"""
+		
+		#Virtuel: faire tourner le robot et le bouger
+		self.robot.turn(-1) #pour simuler la rotation a droite
+		self.robot.move(1) #notre dt est fixé a 1 comme les autres strategies
+		
+		#Reel: juste continuer a garder la roue gauche tourner plus vite que la droite
 		
 		
 	def stop(self):
