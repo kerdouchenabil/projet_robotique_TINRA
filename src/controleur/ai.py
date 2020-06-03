@@ -258,7 +258,7 @@ class turn_left_strategy:
 	"""
 		strategie asynchrone qui permet de tourner a gauche
 		start: quand on lui donne l'ordre de tourner
-		step: reelement on fait tourner la roue droite plus rapidement que la gauche
+		step: reelement on fait tourner la roue DROITE plus rapidement que la GAUCHE
 		stop: quand l'angle donné est fait par rapport à l'etat start
 	"""
 	
@@ -271,7 +271,27 @@ class turn_left_strategy:
 		self.dir_init = robot.getDir()
 		
 
-	
+	def start(self):
+		"""
+			debut de strategie
+			donner l'ordre au moteur DROIT de tourner plus vite (quand le moteur sera codé avec le proxy)
+		"""
+		self.dir_init = robot.getDir()
+		#self.robot.moteur_droit() #a coder dans le proxy
+		
+		
+	def step(self):
+		"""
+			coeur de strategie, update()
+			donner l'ordre de continuer a tourner a gauche
+		"""
+		
+		#Virtuel: faire tourner le robot et le bouger
+		self.robot.turn(1) #pour simuler la rotation a gauche donc l'angle est positif
+		self.robot.move(1) #notre dt est fixé a 1 comme les autres strategies
+		
+		#Reel: juste continuer a garder la roue droite tourner plus vite que la gauche
+		
 	
 	
 	def calcul_distance(self, x1, x2, y1, y2):
