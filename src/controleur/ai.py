@@ -203,13 +203,18 @@ class turn_right_strategy:
 		"""
 			constructeur, initialise la direction initiale
 		"""
+		self.robot = robot
+		self.angle = angle
+		self.dir_init = robot.getDir()
 		
 
 	def start(self):
 		"""
 			debut de strategie
-			
+			donner l'ordre au moteur gauche de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
+		self.dir_init = robot.getDir()
+		#self.robot.moteur_gauche() #a coder dans le proxy
 		
 		
 	def step(self):
