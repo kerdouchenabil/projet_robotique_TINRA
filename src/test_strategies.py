@@ -53,6 +53,8 @@ creation des stratégies pour faire un carée
 '''
 toutdroit = go_ahead_strategy(rob,100)
 tournedroite = turn_right_strategy(rob,90)
+tournegauche = turn_left_strategy(rob,90)
+
 
 print("__________ go_ahead_strategy __________")
 toutdroit.start()
@@ -62,6 +64,7 @@ while(arret==False):
    rob.printRobot()
    arret=toutdroit.stop()
 
+print("")
 print("__________ turn_right_strategy __________")
 tournedroite.start()
 arret = False
@@ -70,4 +73,13 @@ while(arret==False):
    rob.printRobot()
    arret=tournedroite.stop()
 
+print("")
+print("__________ turn_left_strategy __________")
+tournegauche.start()
+arret = False
+while(arret==False):
+   tournegauche.step()
+   rob.printRobot()
+   arret=tournegauche.stop()
+   
 

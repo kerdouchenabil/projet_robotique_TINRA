@@ -278,6 +278,7 @@ class turn_right_strategy:
 		
 		#condition d'arret
 		if(rob_dir<=objectif+precision_angle and rob_dir>=objectif-precision_angle): #si fin de la rotation droite demandée
+			print("FIN turn_right_strategy")
 			return True
 		
 		'''
@@ -312,7 +313,7 @@ class turn_left_strategy:
 		self.angle = angle
 		self.dir_init = robot.direction * (180/math.pi) #en degrés
 		self.angle_step = 5 #en degrés: l'angle pour tourner a chaque fois dans step()
-		self.objectif = (self.dir_init-angle)%360
+		self.objectif = (self.dir_init+angle)%360
 		
 		
 	def calcul_distance(self, x1, x2, y1, y2):
@@ -358,15 +359,16 @@ class turn_left_strategy:
 		rob_dir = self.robot.direction * (180/math.pi) #direction du robot en degrés
 		
 		#prints pour voir l'avancement
-		'''
+		
 		#print("direction robot actuelle (rad)= ",self.robot.direction)
 		print("Direction robot actuelle  rob_dir (deg)=", rob_dir)
 		print("Direction robot initiale  dir_init=", self.dir_init)
 		print("Direction robot objectif (a atteindre)=",objectif)
-		'''
+		
 		
 		#condition d'arret
 		if(rob_dir<=objectif+precision_angle and rob_dir>=objectif-precision_angle): #si fin de la rotation droite demandée
+			print("FIN turn_left_strategy")
 			return True
 		
 		'''
