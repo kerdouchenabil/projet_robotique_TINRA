@@ -40,7 +40,7 @@ class Robot:
 				print("le robot a freine de ", -acc)
 		return
 
-	def turn(self, angle):
+	def d(self, angle):
 		"""
 		float ->
 		calcule la nouvelle direction du vecteur vitesse, permet au robot

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.append('../')
 
-from src.objet.robot import *
+from objet.robot import *
 from math import *
 
 
@@ -131,6 +133,12 @@ class go_ahead_strategy:
 		# mettre robot et dist comme attribut de cette classe pour les utiliser directement dans les fonctions
 		self.robot=robot
 		self.dist=dist
+        
+	def calcul_distance(self, x1, x2, y1, y2):
+		"""
+		fonction qui sert juste a calculer une distance geo entre deux points ( utilisée dans step() )
+		"""
+		return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) )	
 		
 	
 	def start(self):
@@ -139,7 +147,7 @@ class go_ahead_strategy:
 			
 		"""
 		xbegin = self.robot.posx
-		ybegin = self.roboy.posy
+		ybegin = self.robot.posy
 		self.coords_start= [xbegin,ybegin] #initialiser dans _init_ ?
 		self.robot.direction = 0
 		self.robot.speed = 0
@@ -163,7 +171,7 @@ class go_ahead_strategy:
 		
 		self.robot.accelerate(1, 1) #acceleration+1 et dt=1 a chaque etape
 		self.robot.move(1) #dt=1
-		self.dist_parcourue += calcul_distance(self.robot.posx, self.coords_start[0], self.robot.posy, self.coords_start[1])
+		self.dist_parcourue = self.calcul_distance(self.robot.posx, self.coords_start[0], self.robot.posy, self.coords_start[1])
 		
 		
 	def stop(self):
@@ -174,6 +182,7 @@ class go_ahead_strategy:
 		
 		if(self.dist_parcourue >= self.dist): #si fin du parcours
 			self.robot.speed = 0 
+			print("distance parcouru !!!")
 			return True
 		
 		'''
@@ -189,8 +198,8 @@ class go_ahead_strategy:
 		'''
 		
 		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
-	
-	
+    
+
 class turn_right_strategy:
 	"""
 		strategie asynchrone qui permet de tourner a droite
@@ -205,15 +214,20 @@ class turn_right_strategy:
 		"""
 		self.robot = robot
 		self.angle = angle
-		self.dir_init = robot.getDir()
+		self.dir_init = robot.direction
 		
-
+	def calcul_distance(self, x1, x2, y1, y2):
+		"""
+		fonction qui sert juste a calculer une distance geo entre deux points ( utilisée dans step() )
+		"""
+		return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) )
+	    
 	def start(self):
 		"""
 			debut de strategie
 			donner l'ordre au moteur gauche de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
-		self.dir_init = robot.getDir()
+		self.dir_init = self.robot.direction
 		#self.robot.moteur_gauche() #a coder dans le proxy
 		
 		
@@ -223,9 +237,9 @@ class turn_right_strategy:
 			donner l'ordre de continuer a tourner a droite
 			#c'est mieux si la gestion du virtuel et réel est gérée par un proxy
 		"""
-		
+		print("direction = ",self.robot.direction)
 		#Virtuel: faire tourner le robot et le bouger
-		self.robot.turn(-1) #pour simuler la rotation a droite
+		self.robot.turn(-90) #pour simuler la rotation a droite
 		self.robot.move(1) #notre dt est fixé a 1 comme les autres strategies
 		
 		#Reel: juste continuer a garder la roue gauche tourner plus vite que la droite
@@ -235,8 +249,8 @@ class turn_right_strategy:
 		"""
 			renvoi vrai si fin de la strategie
 		"""
-		
-		if(self.robot.getDir() < self.dir_init-self.angle): #si fin de la rotation droite demandée
+		dir=int(self.robot.direction)
+		if(dir < self.dir_init-self.angle): #si fin de la rotation droite demandée
 			return True
 		
 		'''
@@ -253,7 +267,9 @@ class turn_right_strategy:
 		
 		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
 	
-	
+    
+    
+
 class turn_left_strategy:
 	"""
 		strategie asynchrone qui permet de tourner a gauche
@@ -276,7 +292,7 @@ class turn_left_strategy:
 			debut de strategie
 			donner l'ordre au moteur DROIT de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
-		self.dir_init = robot.getDir()
+		self.dir_init = robot.direction
 		#self.robot.moteur_droit() #a coder dans le proxy
 		
 		
@@ -299,7 +315,7 @@ class turn_left_strategy:
 			renvoi vrai si fin de la strategie
 		"""
 		
-		if(self.robot.getDir() > self.dir_init+self.angle): #si fin de la rotation GAUCHE demandée
+		if(self.robot.direction > self.dir_init+self.angle): #si fin de la rotation GAUCHE demandée
 			return True
 		
 		'''
