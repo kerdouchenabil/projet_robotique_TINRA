@@ -387,6 +387,39 @@ class turn_left_strategy:
 	
 
 
+class square_right_strategy:
+	"""
+	la strategie pour faire dessiner un carré en tournant a droite avec le robot
+	utilise les strategies go_ahead et turn_right
+	le principe est simple:
+	->avancer -> tourner droite -> avencer -> ...
+	avec go_ahead de la meme distance et turn_right avec le meme angle (90) a chaque fois
+	"""
+	
+	def __init_(self, robot, x, y, dist):
+		self.robot=robot
+		self.x0 = x # x de depart
+		self.y0 = y # y de depart
+		self.dist=dist #la distance (coté du carré)
+		
+		
+	def start(self):
+		"""
+			debut de strategie
+		"""
+		
+		
+	def step(self):
+		"""
+			coeur de strategie (update)
+		"""
+		
+	
+	def stop(self):
+		"""
+			renvoi vrai si fin de la strategie (fin du dessin d'un carré)
+		"""
+		
 
 
 
