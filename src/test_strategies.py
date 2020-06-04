@@ -9,7 +9,7 @@ from objet.obstacle import *
 robID= 0
 robPosX= 50
 robPosY= 50
-robDir= 0
+robDir= 90
 robVitesse= 0
 
 areneLongeur= 400

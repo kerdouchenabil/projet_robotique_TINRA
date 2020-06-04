@@ -149,7 +149,7 @@ class go_ahead_strategy:
 		xbegin = self.robot.posx
 		ybegin = self.robot.posy
 		self.coords_start= [xbegin,ybegin] #initialiser dans _init_ ?
-		self.robot.direction = 0
+		
 		self.robot.speed = 0
 		
 		return [xbegin,ybegin]   #retourne les coords de depart
@@ -239,7 +239,7 @@ class turn_right_strategy:
 		"""
 		print("direction = ",self.robot.direction)
 		#Virtuel: faire tourner le robot et le bouger
-		self.robot.turn(-90) #pour simuler la rotation a droite
+		self.robot.turn(-5) #pour simuler la rotation a droite
 		self.robot.move(1) #notre dt est fixé a 1 comme les autres strategies
 		
 		#Reel: juste continuer a garder la roue gauche tourner plus vite que la droite
@@ -249,8 +249,10 @@ class turn_right_strategy:
 		"""
 			renvoi vrai si fin de la strategie
 		"""
+		objectif = (self.dir_init-(self.angle % (2*math.pi)) ) % (2*math.pi)
+		print("objectif=",objectif)
 		dir=int(self.robot.direction)
-		if(dir < self.dir_init-self.angle): #si fin de la rotation droite demandée
+		if(dir <= objectif): #si fin de la rotation droite demandée
 			return True
 		
 		'''
