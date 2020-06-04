@@ -218,11 +218,13 @@ class turn_right_strategy:
 		self.angle_step = 5 #en degrés: l'angle pour tourner a chaque fois dans step()
 		self.objectif = (self.dir_init-angle)%360
 		
+		
 	def calcul_distance(self, x1, x2, y1, y2):
 		"""
 		fonction qui sert juste a calculer une distance geo entre deux points ( utilisée dans step() )
 		"""
 		return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) )
+	
 	    
 	def start(self):
 		"""
@@ -263,15 +265,16 @@ class turn_right_strategy:
 		#objectif= objectif * (180/math.pi) #objecif en degrés
 		objectif=self.objectif
 		
-		precision_angle = self.angle_step/2 #l'angle de precision en radean #augmenter la precision si boucle infinie !
+		precision_angle = self.angle_step/2 #l'angle de precision en degrés #augmenter la precision si boucle infinie !
 		rob_dir = self.robot.direction * (180/math.pi) #direction du robot en degrés
 		
-		
+		#les prints suivants sont tres importants pour voir l'avancement de la strategie
+		'''
 		#print("direction robot actuelle (rad)= ",self.robot.direction)
 		print("Direction robot actuelle  rob_dir (deg)=", rob_dir)
 		print("Direction robot initiale  dir_init=", self.dir_init)
 		print("Direction robot objectif (a atteindre)=",objectif)
-		
+		'''
 		
 		#condition d'arret
 		if(rob_dir<=objectif+precision_angle and rob_dir>=objectif-precision_angle): #si fin de la rotation droite demandée
@@ -291,8 +294,7 @@ class turn_right_strategy:
 		
 		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
 	
-    
-    
+
 
 class turn_left_strategy:
 	"""
@@ -308,38 +310,63 @@ class turn_left_strategy:
 		"""
 		self.robot = robot
 		self.angle = angle
-		self.dir_init = robot.getDir()
+		self.dir_init = robot.direction * (180/math.pi) #en degrés
+		self.angle_step = 5 #en degrés: l'angle pour tourner a chaque fois dans step()
+		self.objectif = (self.dir_init-angle)%360
 		
-
+		
+	def calcul_distance(self, x1, x2, y1, y2):
+		return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) )
+	
+	    
 	def start(self):
 		"""
 			debut de strategie
 			donner l'ordre au moteur DROIT de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
-		self.dir_init = robot.direction
-		#self.robot.moteur_droit() #a coder dans le proxy
+		self.dir_init = self.robot.direction * (180/math.pi)
+		#self.dir_init = self.robot.direction #en radean
+		#self.robot.moteur_gauche() #a coder dans le proxy
 		
 		
 	def step(self):
 		"""
 			coeur de strategie, update()
-			donner l'ordre de continuer a tourner a gauche
+			donner l'ordre de continuer a tourner a GAUCHE
+			#c'est mieux si la gestion du virtuel et réel est gérée par un proxy
 		"""
 		
+		objectif = self.dir_init+(self.angle*math.pi/180)
+		objectif=objectif % (2*math.pi)
+		objectif= objectif * (180/math.pi)
+		rob_dir = self.robot.direction * (180/math.pi)
+		
+		
 		#Virtuel: faire tourner le robot et le bouger
-		self.robot.turn(1) #pour simuler la rotation a gauche donc l'angle est positif
+		self.robot.turn(self.angle_step) #angle POSITIF pour simuler la rotation a GAUCHE
 		self.robot.move(1) #notre dt est fixé a 1 comme les autres strategies
 		
-		#Reel: juste continuer a garder la roue droite tourner plus vite que la gauche
+		#Reel: juste continuer a garder la roue DROITE tourner plus vite que la GAUCHE
 		
-	
 		
 	def stop(self):
 		"""
 			renvoi vrai si fin de la strategie
 		"""
+		objectif=self.objectif
+		precision_angle = self.angle_step/2 #l'angle de precision en degrés #augmenter la precision si boucle infinie !
+		rob_dir = self.robot.direction * (180/math.pi) #direction du robot en degrés
 		
-		if(self.robot.direction > self.dir_init+self.angle): #si fin de la rotation GAUCHE demandée
+		#prints pour voir l'avancement
+		'''
+		#print("direction robot actuelle (rad)= ",self.robot.direction)
+		print("Direction robot actuelle  rob_dir (deg)=", rob_dir)
+		print("Direction robot initiale  dir_init=", self.dir_init)
+		print("Direction robot objectif (a atteindre)=",objectif)
+		'''
+		
+		#condition d'arret
+		if(rob_dir<=objectif+precision_angle and rob_dir>=objectif-precision_angle): #si fin de la rotation droite demandée
 			return True
 		
 		'''
@@ -355,15 +382,6 @@ class turn_left_strategy:
 		'''
 		
 		return False #si pas d'obstacle devant et pas encore arrivé a la fin du parcours
-	
-	
-	
-	
-	def calcul_distance(self, x1, x2, y1, y2):
-		"""
-		fonction qui sert juste a calculer une distance geo entre deux points ( utilisée dans step() )
-		"""
-		return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) )
 	
 
 
