@@ -216,6 +216,7 @@ class turn_right_strategy:
 		self.angle = angle
 		self.dir_init = robot.direction * (180/math.pi) #en degrés
 		self.angle_step = 5 #en degrés: l'angle pour tourner a chaque fois dans step()
+		self.objectif = (self.dir_init-angle)%360
 		
 	def calcul_distance(self, x1, x2, y1, y2):
 		"""
@@ -239,14 +240,12 @@ class turn_right_strategy:
 			donner l'ordre de continuer a tourner a droite
 			#c'est mieux si la gestion du virtuel et réel est gérée par un proxy
 		"""
-		print("direction = ",self.robot.direction)
+		
 		objectif = self.dir_init-(self.angle*math.pi/180)
 		objectif=objectif % (2*math.pi)
 		objectif= objectif * (180/math.pi)
 		rob_dir = self.robot.direction * (180/math.pi)
-		print("dir_init=", self.dir_init)
-		print("objectif=",objectif)
-		print("rob_dir=", rob_dir)
+		
 		
 		#Virtuel: faire tourner le robot et le bouger
 		self.robot.turn(-1*self.angle_step) #angle négatif pour simuler la rotation a droite
@@ -259,15 +258,23 @@ class turn_right_strategy:
 		"""
 			renvoi vrai si fin de la strategie
 		"""
-		objectif = self.dir_init-(self.angle*math.pi/180)
-		objectif=objectif % (2*math.pi)
-		objectif= objectif * (180/math.pi) #objecif en degrés
+		#objectif = self.dir_init-(self.angle*math.pi/180)
+		#objectif=objectif % (2*math.pi)
+		#objectif= objectif * (180/math.pi) #objecif en degrés
+		objectif=self.objectif
 		
-		precision_angle = self.angle_step #l'angle de precision en radean
-		
+		precision_angle = self.angle_step/2 #l'angle de precision en radean #augmenter la precision si boucle infinie !
 		rob_dir = self.robot.direction * (180/math.pi) #direction du robot en degrés
 		
-		if(rob_dir>=objectif+precision_angle or rob_dir<=objectif-precision_angle): #si fin de la rotation droite demandée
+		
+		#print("direction robot actuelle (rad)= ",self.robot.direction)
+		print("Direction robot actuelle  rob_dir (deg)=", rob_dir)
+		print("Direction robot initiale  dir_init=", self.dir_init)
+		print("Direction robot objectif (a atteindre)=",objectif)
+		
+		
+		#condition d'arret
+		if(rob_dir<=objectif+precision_angle and rob_dir>=objectif-precision_angle): #si fin de la rotation droite demandée
 			return True
 		
 		'''
