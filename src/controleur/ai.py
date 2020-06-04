@@ -133,6 +133,7 @@ class go_ahead_strategy:
 		# mettre robot et dist comme attribut de cette classe pour les utiliser directement dans les fonctions
 		self.robot=robot
 		self.dist=dist
+		self.coords_start=[robot.posx, robot.posy]
         
 	def calcul_distance(self, x1, x2, y1, y2):
 		"""
@@ -396,14 +397,14 @@ class square_right_strategy:
 	avec go_ahead de la meme distance et turn_right avec le meme angle (90) a chaque fois
 	"""
 	
-	def __init_(self, robot, x, y, dist):
+	def __init__(self, robot, x, y, dist):
 		self.robot=robot
 		self.x0 = x # x de depart
 		self.y0 = y # y de depart
 		self.dist=dist #la distance (coté du carré)
 		
 		avance = go_ahead_strategy(robot, dist)
-		tourne = turn_right_strategy(rob, 90)
+		tourne = turn_right_strategy(robot, 90)
 		
 		self.avance=avance
 		self.tourne=tourne
@@ -416,7 +417,7 @@ class square_right_strategy:
 			debut de strategie
 		"""
 		self.robot.vitesse=0
-		self.current_strategy=self.strategy_list.pop()
+		self.current_strategy=self.strategy_list.pop(0)
 		
 		
 	def step(self):
@@ -426,7 +427,7 @@ class square_right_strategy:
 		
 		if(self.current_strategy.stop()): #si la strategie courante est finie
 			if( len(self.strategy_list)>0 ): #liste non vide
-				self.current_strategy=self.strategy_list.pop() #passe a la suivante
+				self.current_strategy=self.strategy_list.pop(0) #passe a la suivante
 				self.current_strategy.start() #demmare la suivante
 				return
 		
