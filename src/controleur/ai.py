@@ -402,11 +402,21 @@ class square_right_strategy:
 		self.y0 = y # y de depart
 		self.dist=dist #la distance (coté du carré)
 		
+		avance = go_ahead_strategy(robot, dist)
+		tourne = turn_right_strategy(rob, 90)
+		
+		self.avance=avance
+		self.tourne=tourne
+		
+		self.strategy_list=[avance, tourne, avance, tourne, avance, tourne, avance, tourne] #1:avance  2:tourne
+		
 		
 	def start(self):
 		"""
 			debut de strategie
 		"""
+		self.robot.vitesse=0
+		self.current_strategy=self.strategy_list.pop()
 		
 		
 	def step(self):
@@ -414,12 +424,23 @@ class square_right_strategy:
 			coeur de strategie (update)
 		"""
 		
+		if(self.current_strategy.stop()): #si la strategie courante est finie
+			if( len(self.strategy_list)>0 ): #liste non vide
+				self.current_strategy=self.strategy_list.pop() #passe a la suivante
+				self.current_strategy.start() #demmare la suivante
+				return
+		
+		#si strategie courante est en cours
+		self.current_strategy.step()
+		
 	
 	def stop(self):
 		"""
 			renvoi vrai si fin de la strategie (fin du dessin d'un carré)
 		"""
+		if( len(self.strategy_list)==0 ): #liste vide donc fin des strategies
+			print("FIN square_right_strategy")
+			return True
 		
-
-
+		return False
 
