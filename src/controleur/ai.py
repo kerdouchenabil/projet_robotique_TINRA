@@ -182,7 +182,7 @@ class go_ahead_strategy:
 		
 		if(self.dist_parcourue >= self.dist): #si fin du parcours
 			self.robot.speed = 0 
-			print("distance parcouru !!!")
+			print("fin go_ahead_strategy.")
 			return True
 		
 		'''
@@ -214,7 +214,8 @@ class turn_right_strategy:
 		"""
 		self.robot = robot
 		self.angle = angle
-		self.dir_init = robot.direction
+		self.dir_init = robot.direction * (180/math.pi) #en degrés
+		self.angle_step = 5 #en degrés: l'angle pour tourner a chaque fois dans step()
 		
 	def calcul_distance(self, x1, x2, y1, y2):
 		"""
@@ -227,7 +228,8 @@ class turn_right_strategy:
 			debut de strategie
 			donner l'ordre au moteur gauche de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
-		self.dir_init = self.robot.direction
+		self.dir_init = self.robot.direction * (180/math.pi)
+		#self.dir_init = self.robot.direction #en radean
 		#self.robot.moteur_gauche() #a coder dans le proxy
 		
 		
@@ -238,8 +240,16 @@ class turn_right_strategy:
 			#c'est mieux si la gestion du virtuel et réel est gérée par un proxy
 		"""
 		print("direction = ",self.robot.direction)
+		objectif = self.dir_init-(self.angle*math.pi/180)
+		objectif=objectif % (2*math.pi)
+		objectif= objectif * (180/math.pi)
+		rob_dir = self.robot.direction * (180/math.pi)
+		print("dir_init=", self.dir_init)
+		print("objectif=",objectif)
+		print("rob_dir=", rob_dir)
+		
 		#Virtuel: faire tourner le robot et le bouger
-		self.robot.turn(-5) #pour simuler la rotation a droite
+		self.robot.turn(-1*self.angle_step) #angle négatif pour simuler la rotation a droite
 		self.robot.move(1) #notre dt est fixé a 1 comme les autres strategies
 		
 		#Reel: juste continuer a garder la roue gauche tourner plus vite que la droite
@@ -249,10 +259,15 @@ class turn_right_strategy:
 		"""
 			renvoi vrai si fin de la strategie
 		"""
-		objectif = (self.dir_init-(self.angle % (2*math.pi)) ) % (2*math.pi)
-		print("objectif=",objectif)
-		dir=int(self.robot.direction)
-		if(dir <= objectif): #si fin de la rotation droite demandée
+		objectif = self.dir_init-(self.angle*math.pi/180)
+		objectif=objectif % (2*math.pi)
+		objectif= objectif * (180/math.pi) #objecif en degrés
+		
+		precision_angle = self.angle_step #l'angle de precision en radean
+		
+		rob_dir = self.robot.direction * (180/math.pi) #direction du robot en degrés
+		
+		if(rob_dir>=objectif+precision_angle or rob_dir<=objectif-precision_angle): #si fin de la rotation droite demandée
 			return True
 		
 		'''
