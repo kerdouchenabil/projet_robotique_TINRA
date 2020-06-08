@@ -232,7 +232,8 @@ class turn_right_strategy:
 			debut de strategie
 			donner l'ordre au moteur gauche de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
-		self.dir_init = self.robot.direction * (180/math.pi)
+		self.dir_init = self.robot.direction * (180/math.pi) #mise a jour de la direction initiale
+		self.objectif = (self.dir_init-self.angle)%360 #mise a jour de l'objectif aussi
 		#self.dir_init = self.robot.direction #en radean
 		#self.robot.moteur_gauche() #a coder dans le proxy
 		
@@ -327,6 +328,7 @@ class turn_left_strategy:
 			donner l'ordre au moteur DROIT de tourner plus vite (quand le moteur sera codé avec le proxy)
 		"""
 		self.dir_init = self.robot.direction * (180/math.pi)
+		self.objectif = (self.dir_init-self.angle)%360 #mise a jour de l'objectif aussi
 		#self.dir_init = self.robot.direction #en radean
 		#self.robot.moteur_gauche() #a coder dans le proxy
 		
@@ -403,13 +405,25 @@ class square_right_strategy:
 		self.y0 = y # y de depart
 		self.dist=dist #la distance (coté du carré)
 		
-		avance = go_ahead_strategy(robot, dist)
-		tourne = turn_right_strategy(robot, 90)
+		robot.posx=x
+		robot.posy=y
 		
-		self.avance=avance
-		self.tourne=tourne
+		avance1 = go_ahead_strategy(robot, dist)
+		tourne1 = turn_right_strategy(robot, 90)
 		
-		self.strategy_list=[avance, tourne, avance, tourne, avance, tourne, avance, tourne] #1:avance  2:tourne
+		avance2 = go_ahead_strategy(robot, dist)
+		tourne2 = turn_right_strategy(robot, 90)
+		
+		avance3 = go_ahead_strategy(robot, dist)
+		tourne3 = turn_right_strategy(robot, 90)
+		
+		avance4 = go_ahead_strategy(robot, dist)
+		tourne4 = turn_right_strategy(robot, 90)
+		
+		#self.avance=avance
+		#self.tourne=tourne
+		
+		self.strategy_list=[avance1, tourne1, avance2, tourne2, avance3, tourne3, avance4, tourne4] 
 		
 		
 	def start(self):
@@ -432,7 +446,8 @@ class square_right_strategy:
 				return
 		
 		#si strategie courante est en cours
-		self.current_strategy.step()
+		else:
+			self.current_strategy.step()
 		
 	
 	def stop(self):
@@ -444,4 +459,9 @@ class square_right_strategy:
 			return True
 		
 		return False
+
+
+
+
+
 

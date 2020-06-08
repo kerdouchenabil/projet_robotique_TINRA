@@ -8,6 +8,8 @@ from objet.arene import *
 from objet.robot import *
 from objet.obstacle import *
 
+from controleur.ai import *
+
 #-------------------------------------------------------------
 # construit l'arene  
 #-------------------------------------------------------------

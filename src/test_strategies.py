@@ -7,13 +7,13 @@ from objet.obstacle import *
     initialisation des attributs de depart
 '''
 robID= 0
-robPosX= 50
-robPosY= 50
+robPosX= 100
+robPosY= 300
 robDir= 0
 robVitesse= 0
 
-areneLongeur= 400
-areneLargeur= 400
+areneLongeur= 500
+areneLargeur= 500
 
 
 '''
@@ -55,7 +55,7 @@ toutdroit = go_ahead_strategy(rob,100)
 tournedroite = turn_right_strategy(rob,90)
 tournegauche = turn_left_strategy(rob,90)
 
-
+'''
 print("__________ go_ahead_strategy __________")
 toutdroit.start()
 arret = False
@@ -81,5 +81,15 @@ while(arret==False):
    tournegauche.step()
    rob.printRobot()
    arret=tournegauche.stop()
-   
+'''   
+
+fairecarre = square_right_strategy(rob, 100, 200, 100)
+print("")
+print("__________ square_right_strategy __________")
+fairecarre.start()
+arret = False
+while(arret==False):
+   fairecarre.step()
+   rob.printRobot()
+   arret=fairecarre.stop()
 
