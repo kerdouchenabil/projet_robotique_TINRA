@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/Main.py=utf-8
 encoding//src/controleAffichage.py=utf-8
 encoding//src/controleur/ai.py=utf-8
 encoding//src/graphical_engine/engine2D/affichageArene.py=utf-8

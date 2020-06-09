@@ -42,30 +42,7 @@ class Controleur:
 		#a completer
 		return
 
-#------------- les objectif du robot ------------
 
-	def setParcours(self, *cord):
-		"""
-			?
-		"""
-
-		return 
-
-	def setTeteBaisse(self):
-		"""
-			?
-		"""
-		
-		return
-	
-
-	def setSuivreBalise(self):
-		"""
-			?
-		"""
-            #plus tard, bien plus tard
-            
-		return
 
 #------------- fonction utilitaire ------------
 
